@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movment : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     Rigidbody2D rb;
     [Header("Moving")]
@@ -40,6 +40,19 @@ public class Movment : MonoBehaviour
         else { jumpBufferCounter -= Time.deltaTime; }
 
         Jump();
+
+        Vector3 characterScale = transform.localScale;
+        if (Input.GetAxis("Horizontal") < 0)
+        {
+            characterScale.x = 1;
+        }
+
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            characterScale.x = -1;
+
+        }
+        transform.localScale = characterScale;
     }
     private void FixedUpdate()
     {
