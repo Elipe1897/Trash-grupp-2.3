@@ -123,6 +123,36 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &414680274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 414680275}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &414680275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414680274}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4764285, y: -0.04, z: -2.4086227}
+  m_LocalScale: {x: 0.57142854, y: 3.6317415, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1079903168}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &722354784
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,9 +266,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636660843601ae94592ea9da8035f57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ammo: 0
+  Reloading: 0
   DMG: 5
   Bullet: {fileID: 7640681648664395617, guid: 51edd92a2dcb046468e471d44f237b5e, type: 3}
   FireEffect: {fileID: 8212863653849124257, guid: 3f79923aea7fbb24ba0395cc6cba2c2b, type: 3}
+  FirePoint: {fileID: 414680274}
 --- !u!212 &1079903167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -300,7 +333,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.197, y: 0.058463294, z: -2}
   m_LocalScale: {x: 1.4, y: 0.11128934, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 414680275}
   m_Father: {fileID: 1699564471}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1590,6 +1624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636660843601ae94592ea9da8035f57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ammo: 0
+  Reloading: 0
   DMG: 0
   Bullet: {fileID: 7640681648664395617, guid: 51edd92a2dcb046468e471d44f237b5e, type: 3}
   FireEffect: {fileID: 8212863653849124257, guid: 3f79923aea7fbb24ba0395cc6cba2c2b, type: 3}
+  FirePoint: {fileID: 0}
