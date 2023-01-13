@@ -40,7 +40,10 @@ public class ScoreManagement : MonoBehaviour
     {
         Coins += point;
         CoinsText.text = " COINS: " + Coins.ToString();
+        Scrap -= Scrap;
+        ScrapText.text = " SCRAP: " + Scrap.ToString();
         Debug.Log(Coins);
+        Debug.Log(Scrap);
     }
     public void AddSCrap(int point)
     {

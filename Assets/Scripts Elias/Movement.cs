@@ -27,6 +27,8 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask platformLayerMask;
 
+    public bool TouchBin;
+    public bool TouchScrap;
     
 
     private void Start()
@@ -55,6 +57,18 @@ public class Movement : MonoBehaviour
         }
         transform.localScale = characterScale;
 
+        if(TouchBin == true)
+        {
+            if (Input.GetKeyDown(KeyCode.E)  )
+            {
+                ScoreManagement.instance.AddPoint(ScoreManagement.instance.Scrap);
+            }
+        }
+        if(TouchScrap == true)
+        {
+            ScoreManagement.instance.AddSCrap(1);
+        }
+        
        
     }
     private void FixedUpdate()
@@ -103,20 +117,47 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Bin")
+        if (collision.transform.tag == "Bin")
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ScoreManagement.instance.AddPoint(1);
-            }
+            TouchBin = true;
         }
-        if(collision.transform.tag == "Scrap")
+        
+        if (collision.transform.tag == "Scrap")
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                ScoreManagement.instance.AddSCrap(1);
-            }
+            TouchScrap = true;
+        }
+      
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Bin")
+        {
+            TouchBin = false;
+        }
+
+        if (collision.transform.tag == "Scrap")
+        {
+            TouchScrap = false;
         }
     }
-    
+
+    /* private void OnTriggerStay2D(Collider2D collision)
+     {
+         if(collision.transform.tag == "Bin")
+         {
+             if (Input.GetKeyDown(KeyCode.E))
+             {
+                 ScoreManagement.instance.AddPoint(1);
+             }
+         }
+         if(collision.transform.tag == "Scrap")
+         {
+             if (Input.GetKeyDown(KeyCode.Mouse0))
+             {
+                 ScoreManagement.instance.AddSCrap(1);
+             }
+         }
+     }*/
+
 }
