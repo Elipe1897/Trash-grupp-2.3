@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Dynamic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class Health : MonoBehaviour
 {
@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth;
 
+    public GameObject Heart3;
+    public GameObject Heart2;
+    public GameObject Heart1;
 
     private void Awake()
     {
@@ -28,8 +31,19 @@ public class Health : MonoBehaviour
         
         if (currentHealth == 0)              //När man har 0 liv kvar så dör man-Lisa
         {
-            Destroy(gameObject);  
+            Destroy(gameObject);
+            Destroy(Heart1);
             // transform.position = new Vector3(-20, 20, 0);
+        }
+        if (currentHealth == 2)              //ett hjärta försvinner när man tappar ett liv
+        {
+            Destroy(Heart3);
+            
+        }
+        if (currentHealth == 1)              
+        {
+            Destroy(Heart2);
+            
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)    //om man nuddar en bullet så förlorar man ett liv-Lisa
