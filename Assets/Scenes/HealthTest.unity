@@ -529,6 +529,7 @@ MonoBehaviour:
   platformLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  TouchBin: 0
 --- !u!61 &1002799986
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -655,6 +656,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
+  Heart3: {fileID: 1336826124}
+  Heart2: {fileID: 468813533}
+  Heart1: {fileID: 1222064206}
 --- !u!1 &1222064206
 GameObject:
   m_ObjectHideFlags: 0
