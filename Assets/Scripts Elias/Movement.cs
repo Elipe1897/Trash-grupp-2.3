@@ -27,8 +27,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask platformLayerMask;
 
-    public bool TouchBin;
-
+    
 
     private void Start()
     {
@@ -56,13 +55,7 @@ public class Movement : MonoBehaviour
         }
         transform.localScale = characterScale;
 
-        if(TouchBin == true)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                ScoreManagement.instance.AddPoint(1);
-            }
-        }
+       
     }
     private void FixedUpdate()
     {
@@ -107,16 +100,23 @@ public class Movement : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
         return raycastHit.collider != null;
     }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
         if(collision.transform.tag == "Bin")
         {
-            TouchBin = true;
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ScoreManagement.instance.AddPoint(1);
+            }
         }
-        else
+        if(collision.transform.tag == "Scrap")
         {
-            TouchBin = false;
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                ScoreManagement.instance.AddSCrap(1);
+            }
         }
     }
-
+    
 }
