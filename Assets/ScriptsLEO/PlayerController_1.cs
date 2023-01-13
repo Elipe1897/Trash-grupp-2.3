@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController_1 : MonoBehaviour
 {
@@ -27,10 +28,12 @@ public class PlayerController_1 : MonoBehaviour
     [SerializeField]
     private LayerMask platformLayerMask;
 
+    public Text ScrapsText;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
     private void Update()
     {
@@ -83,5 +86,16 @@ public class PlayerController_1 : MonoBehaviour
          RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
         return raycastHit.collider != null;
    }
-    
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.transform.tag == "Scrap")
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+
+            }
+
+        }
+    }
 }

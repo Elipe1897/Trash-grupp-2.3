@@ -5,8 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Bin
-  - Aj
-  - Scrap
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -14,8 +13,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - Obstacle
+  - Enemy
   - 
   - 
   - 
