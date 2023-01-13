@@ -27,6 +27,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private LayerMask platformLayerMask;
 
+    
 
     private void Start()
     {
@@ -53,6 +54,8 @@ public class Movement : MonoBehaviour
 
         }
         transform.localScale = characterScale;
+
+       
     }
     private void FixedUpdate()
     {
@@ -60,6 +63,7 @@ public class Movement : MonoBehaviour
         if (rb.velocity.y < 0) { rb.gravityScale = gravityScale * fallGravityMultiplier; }
         else { rb.gravityScale = gravityScale; }
     }
+   
 
     private void Move()
     {
@@ -97,4 +101,22 @@ public class Movement : MonoBehaviour
         return raycastHit.collider != null;
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.transform.tag == "Bin")
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ScoreManagement.instance.AddPoint(1);
+            }
+        }
+        if(collision.transform.tag == "Scrap")
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                ScoreManagement.instance.AddSCrap(1);
+            }
+        }
+    }
+    
 }
