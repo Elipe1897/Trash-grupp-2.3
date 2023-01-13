@@ -25,5 +25,6 @@ public class CameraFollow : MonoBehaviour
             transform.position = Vector3.MoveTowards(transform.position, newPos, speed * Time.deltaTime);
         }
 
+        
     }
 }

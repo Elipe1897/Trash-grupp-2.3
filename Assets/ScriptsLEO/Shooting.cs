@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
     public int Ammo;
@@ -12,9 +12,12 @@ public class Shooting : MonoBehaviour
     public GameObject FireEffect;
 
     public GameObject FirePoint;
+
+    public Text AmmoText;
     public void Start()
     {
         Ammo = 30;
+        AmmoText.text = Ammo.ToString() + "/30"; 
     }
 
 
@@ -47,6 +50,7 @@ public class Shooting : MonoBehaviour
                 Debug.Log("Effect!");
                 StartCoroutine(RecoilTrue());
                 Debug.Log("Recoil!");
+                AmmoText.text = Ammo.ToString() + "/30";
             }
 
         }
@@ -61,6 +65,7 @@ public class Shooting : MonoBehaviour
     public IEnumerator ReloadingTrue()
     {
         Ammo = 30;
+        AmmoText.text = Ammo.ToString() + "/30";
         Reloading = true;
         yield return new WaitForSeconds(1f);
         Reloading = false;
