@@ -13,12 +13,12 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        instance = this; // It assigns itself as a instance.
+        instance = this; 
     }
     // Start is called before the first frame update
     private void Start()
     {
-        currentHealth = 3; // When the game starts your health is set to 3.
+        currentHealth = 3; //man börjar med 3 liv-Lisa
     }
 
 
@@ -26,13 +26,13 @@ public class Health : MonoBehaviour
     void Update()
     {
         
-        if (currentHealth == 0)
+        if (currentHealth == 0)              //När man har 0 liv kvar så dör man-Lisa
         {
-            Destroy(gameObject);
+            Destroy(gameObject);  
             // transform.position = new Vector3(-20, 20, 0);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)    //om man nuddar en bullet så förlorar man ett liv-Lisa
     {
         if (collision.transform.tag == "Aj")
         {
@@ -41,7 +41,7 @@ public class Health : MonoBehaviour
     }
     public void TakeDamage()
     {
-        currentHealth -= 1; // makes you lose health
+        currentHealth -= 1; // gör så att man förlorar liv-Lisa
     }
 
 
