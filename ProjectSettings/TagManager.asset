@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Bin
   - Obstacle
+  - Scrap
+  - Aj
+  - Ladder
   layers:
   - Default
   - TransparentFX
