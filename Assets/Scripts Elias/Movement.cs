@@ -30,11 +30,11 @@ public class Movement : MonoBehaviour
     public bool TouchBin;
     public bool TouchScrap;
     
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
         if (IsGrounded()) { coyoteTimeCounter = coyoteTimer; }
@@ -59,25 +59,19 @@ public class Movement : MonoBehaviour
 
         if(TouchBin == true)
         {
-            if (Input.GetKeyDown(KeyCode.E)  )
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                ScoreManagement.instance.AddPoint(ScoreManagement.instance.Scrap);
+                ScoreController.instance.AddPoint(ScoreController.instance.Scrap);
             }
         }
-        if(TouchScrap == true)
-        {
-            ScoreManagement.instance.AddSCrap(1);
-        }
-        
-       
     }
+
     private void FixedUpdate()
     {
         Move();
         if (rb.velocity.y < 0) { rb.gravityScale = gravityScale * fallGravityMultiplier; }
         else { rb.gravityScale = gravityScale; }
     }
-   
 
     private void Move()
     {
@@ -126,7 +120,6 @@ public class Movement : MonoBehaviour
         {
             TouchScrap = true;
         }
-      
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -141,23 +134,4 @@ public class Movement : MonoBehaviour
             TouchScrap = false;
         }
     }
-
-    /* private void OnTriggerStay2D(Collider2D collision)
-     {
-         if(collision.transform.tag == "Bin")
-         {
-             if (Input.GetKeyDown(KeyCode.E))
-             {
-                 ScoreManagement.instance.AddPoint(1);
-             }
-         }
-         if(collision.transform.tag == "Scrap")
-         {
-             if (Input.GetKeyDown(KeyCode.Mouse0))
-             {
-                 ScoreManagement.instance.AddSCrap(1);
-             }
-         }
-     }*/
-
 }
