@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreManagement : MonoBehaviour
+public class ScoreController : MonoBehaviour
 {
-    public static ScoreManagement instance;
+    public static ScoreController instance;
 
     public int Coins;
     public Text CoinsText;
 
     public int Scrap;
     public Text ScrapText;
-    public GameObject Scraps;
+
     // varibles for Score, Trash and time and text
 
     public void Awake()
@@ -49,7 +49,6 @@ public class ScoreManagement : MonoBehaviour
     {
         Scrap += point;
         ScrapText.text = " SCRAP: " + Scrap.ToString();
-        Destroy(Scraps);
         Debug.Log(Scrap);
     }
 

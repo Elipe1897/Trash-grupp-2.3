@@ -9,6 +9,7 @@ TagManager:
   - Scrap
   - Aj
   - Ladder
+  - Ground
   layers:
   - Default
   - TransparentFX
