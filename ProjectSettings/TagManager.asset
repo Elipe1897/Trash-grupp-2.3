@@ -11,7 +11,7 @@ TagManager:
   - Ladder
   - Bullet
   - Enemy
-  - die
+  - Ground
   layers:
   - Default
   - TransparentFX
