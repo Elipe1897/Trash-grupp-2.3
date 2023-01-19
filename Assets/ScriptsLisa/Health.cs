@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     public GameObject Heart2;
     public GameObject Heart1;
 
+    [SerializeField] private AudioSource damageSoundEffect; 
+
     private void Awake()
     {
         instance = this; 
@@ -21,7 +23,7 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        currentHealth = 3; //man börjar med 3 liv-Lisa
+        currentHealth = 3; //man bï¿½rjar med 3 liv-Lisa
     }
 
 
@@ -29,34 +31,47 @@ public class Health : MonoBehaviour
     void Update()
     {
         
-        if (currentHealth == 0)              //När man har 0 liv kvar så dör man-Lisa
+        if (currentHealth == 0)              //Nï¿½r man har 0 liv kvar sï¿½ dï¿½r man-Lisa
         {
             //Destroy(gameObject);
             Destroy(Heart1);
-            // transform.position = new Vector3(-20, 20, 0);
+            
+            transform.position = new Vector3(20, -5, 0);
         }
-        if (currentHealth == 2)              //ett hjärta försvinner när man tappar ett liv
+        if (currentHealth == 2)              //ett hjï¿½rta fï¿½rsvinner nï¿½r man tappar ett liv
         {
+
             Destroy(Heart3);
             
         }
         if (currentHealth == 1)              
         {
+            
             Destroy(Heart2);
             
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)    //om man nuddar en bullet så förlorar man ett liv-Lisa
+    private void OnCollisionEnter2D(Collision2D collision)    //om man nuddar en bullet sï¿½ fï¿½rlorar man ett liv-Lisa
     {
         if (collision.transform.tag == "Aj")
         {
             Health.instance.TakeDamage();
+         
         }
+
+        if (collision.transform.tag == "die")
+        {
+            
+            damageSoundEffect.Play();
+        }
+
     }
+
+    
     public void TakeDamage()
     {
-        currentHealth -= 1; // gör så att man förlorar liv-Lisa
+        currentHealth -= 1; // gï¿½r sï¿½ att man fï¿½rlorar liv-Lisa
     }
 
-
+    
 }

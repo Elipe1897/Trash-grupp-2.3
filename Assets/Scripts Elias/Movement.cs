@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private AudioSource jumpSoundEffect; 
+
     Rigidbody2D rb;
     [Header("Moving")]
     [SerializeField, Range(0, 1)]
@@ -22,8 +24,8 @@ public class Movement : MonoBehaviour
     private float jumpBufferCounter;
 
     [Header("isGrounded")]
-    public BoxCollider2D boxCollider;
-
+    public PolygonCollider2D boxCollider;
+    
     [SerializeField]
     private LayerMask platformLayerMask;
 
@@ -44,15 +46,15 @@ public class Movement : MonoBehaviour
 
         Jump();
 
-        Vector3 characterScale = transform.localScale;
+        Vector2 characterScale = transform.localScale;
         if (Input.GetAxis("Horizontal") < 0)
         {
-            characterScale.x = 1;
+            characterScale.x = -3.7f;
         }
 
         if (Input.GetAxis("Horizontal") > 0)
         {
-            characterScale.x = -1;
+            characterScale.x = 3.7f;
 
         }
         transform.localScale = characterScale;
@@ -100,11 +102,14 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
             jumpBufferCounter = 0;
+            jumpSoundEffect.Play(); //om man hoppar så spelas hopp ljudet-Lisa
         }
         if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0)
         {
+            
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
             coyoteTimeCounter = 0;
+            
         }
     }
 
