@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 8755372953077576463}
   - component: {fileID: 8755372953077576462}
   - component: {fileID: 8755372953077576561}
-  - component: {fileID: 8755372953077576562}
+  - component: {fileID: 8071704627530319818}
+  - component: {fileID: 3158365859973619570}
   m_Layer: 0
   m_Name: Bat
   m_TagString: Enemy
@@ -48,14 +49,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &8755372953077576463
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -159,7 +160,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8755372953077576562
+--- !u!114 &8071704627530319818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,12 +169,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 8755372953077576460}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65d61fbdff7f7774e98c09b4aa004a36, type: 3}
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
+--- !u!114 &3158365859973619570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8755372953077576460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f316e535257e68f4d8dba1a43c8bd2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   assHat: 0
-  speed: 5
+  speed: 500
   nextWaypointDistance: 3
-  anim: {fileID: 8755372953077576561}
+  anim: {fileID: 0}
   health: 3

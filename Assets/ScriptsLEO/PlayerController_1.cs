@@ -5,6 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerController_1 : MonoBehaviour
 {
+    private enum State { idle,run, jump, hurt, death };
+    private State state = State.idle;
+
+    public Animator anim;
+
+    public GameObject GFX;
+
+    Health health;
+
     Rigidbody2D rb;
     [Header("Moving")]
     [SerializeField, Range(0, 1)]
@@ -23,26 +32,35 @@ public class PlayerController_1 : MonoBehaviour
     private float jumpBufferCounter;
 
     [Header("isGrounded")]
-    public BoxCollider2D boxCollider;
+    public PolygonCollider2D boxCollider;
 
     [SerializeField]
     private LayerMask platformLayerMask;
 
     public Text ScrapsText;
 
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
 
     }
     private void Update()
     {
+
+        StateSwitch();
+        anim.SetInteger("states", (int)state);
+
         if (IsGrounded()) { coyoteTimeCounter = coyoteTimer; }
         else { coyoteTimeCounter -= Time.deltaTime; }
         if (Input.GetKeyDown(KeyCode.W)) { jumpBufferCounter = jumpBufferTime; }
         else { jumpBufferCounter -= Time.deltaTime; }
-
+        
         Jump();
+
+      
+        Flip();
     }
     private void FixedUpdate()
     {
@@ -63,9 +81,18 @@ public class PlayerController_1 : MonoBehaviour
         else
             xVel *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10f); // it dampens your speed so you accelerate slower when you are faster 
         rb.velocity = new Vector2(xVel, rb.velocity.y);
-
     }
-
+    void Flip()
+    {
+        if (rb.velocity.x >= 0.1)
+        {
+            GFX.transform.localScale = new Vector3(3.7f,3.7f,3.7f);
+        }
+        else if (rb.velocity.x <= -0.1)
+        {
+            GFX.transform.localScale = new Vector3(-3.7f, 3.7f, 3.7f);
+        }
+    }
     void Jump()
     {
         if (coyoteTimeCounter > 0 && jumpBufferCounter > 0)
@@ -87,15 +114,49 @@ public class PlayerController_1 : MonoBehaviour
         return raycastHit.collider != null;
    }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Scrap")
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-
-            }
+        if (collision.transform.tag == "Aj")
+        { 
+          Health.instance.TakeDamage();
+            
 
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.tag == "Enemy"|| collision.transform.tag =="Aj")
+        {
+            state = State.hurt;
+        }
+    }
+    private void StateSwitch()
+    {
+        if (health.currentHealth > 0)
+        {
+            if (rb.velocity.x >= 0.1)
+            {
+                state = State.run;
+            }
+            else if (rb.velocity.x <= -0.1)
+            {
+                state = State.run;
+            }
+            else
+            {
+                state = State.idle;
+            }
+        }
+        else if (health.currentHealth == 0)
+        {
+            state = State.death;
+            StartCoroutine(Die());
+        }
+    }
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(.75f);
+        Destroy(gameObject);
+    }
+   
 }

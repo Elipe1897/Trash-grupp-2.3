@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
         
         if (currentHealth == 0)              //När man har 0 liv kvar så dör man-Lisa
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
             Destroy(Heart1);
             // transform.position = new Vector3(-20, 20, 0);
         }
