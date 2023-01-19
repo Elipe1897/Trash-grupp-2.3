@@ -59,7 +59,7 @@ public class Timer : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(leadertime / 60f);
         int seconds = Mathf.FloorToInt(leadertime - minutes * 60);   // if seconds > 60 then minutes becomes 1 
-        textLeaderTime.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        textLeaderTime.text = string.Format("Best Time: " + "{0:00}:{1:00}", minutes, seconds);
     }
     public void Stoptimer()
     {
