@@ -204,5 +204,6 @@ MonoBehaviour:
   assHat: 0
   speed: 500
   nextWaypointDistance: 3
-  anim: {fileID: 0}
+  anim: {fileID: 8755372953077576561}
   health: 3
+  attackTimer: 0

@@ -24,7 +24,7 @@ public class PauseScript : MonoBehaviour
             Debug.Log("Pause");
             leaveMenu = 1;
             originalPos = transform.position;
-            transform.position = target.position; //om man trycker på esc när värdet är 0, så blir man teleporterad till ett objekt med en specifik tag - Darian
+            transform.position = target.position; //om man trycker på esc när värdet är 0, så blir man teleporterad till det objekt/ställe man lagt in som target position - Darian
         }
         else if (Input.GetKeyDown(KeyCode.Escape) && leaveMenu == 1)
         {
