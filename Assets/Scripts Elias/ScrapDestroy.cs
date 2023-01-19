@@ -26,7 +26,12 @@ public class ScrapDestroy : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.isKinematic = true;
         }
-        if (collision.transform.tag == "Player")
+       
+        
+    }
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+         if (collision.transform.tag == "Player")
         {
             Destroy(gameObject);
             ScoreManagement.instance.AddSCrap(1);

@@ -25,8 +25,8 @@ public class ScoreManagement : MonoBehaviour
     }
     public void Start()
     {
-        CoinsText.text = " COINS: " + Coins.ToString();
-        ScrapText.text = " SCRAP: " + Scrap.ToString();
+        CoinsText.text = Coins.ToString();
+        ScrapText.text =  Scrap.ToString();
 
     }
 
@@ -38,16 +38,16 @@ public class ScoreManagement : MonoBehaviour
     public void AddPoint(int point)// Adds the set points to points in score - Elias
     {
         Coins += point;
-        CoinsText.text = " COINS: " + Coins.ToString();
+        CoinsText.text = Coins.ToString();
         Scrap -= Scrap;
-        ScrapText.text = " SCRAP: " + Scrap.ToString();
+        ScrapText.text = Scrap.ToString();
         Debug.Log(Coins);
         Debug.Log(Scrap);
     }
     public void AddSCrap(int point)
     {
         Scrap += point;
-        ScrapText.text = " SCRAP: " + Scrap.ToString();
+        ScrapText.text = Scrap.ToString();
         Debug.Log(Scrap);
     }
 

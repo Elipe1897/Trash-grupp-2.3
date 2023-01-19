@@ -23,7 +23,7 @@ public class PlayerController_1 : MonoBehaviour
     private float jumpBufferCounter;
 
     [Header("isGrounded")]
-    public BoxCollider2D boxCollider;
+    public PolygonCollider2D boxCollider;
 
     [SerializeField]
     private LayerMask platformLayerMask;
