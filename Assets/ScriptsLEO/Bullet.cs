@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public ParticleSystem ps;
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.transform.tag == "Enemy")
+        {
+            Instantiate(ps, collision.transform.position, Quaternion.identity);
+            CameraShake.instance.Shake();
+            Destroy(gameObject);
+        }
     }
 }

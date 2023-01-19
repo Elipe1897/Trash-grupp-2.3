@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 8103367859805343476}
   - component: {fileID: 8103367859805343479}
   - component: {fileID: 8103367859805343477}
-  - component: {fileID: 8103367859805343474}
+  - component: {fileID: -6785549896481363252}
+  - component: {fileID: 135472417128195558}
   m_Layer: 0
   m_Name: Broken_glass
-  m_TagString: Untagged
+  m_TagString: Aj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +95,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -123,7 +124,28 @@ PolygonCollider2D:
       - {x: 0.050567854, y: 0.005795042}
       - {x: 0.1395322, y: 0.051871143}
       - {x: 0.0906826, y: 0.11778758}
---- !u!114 &8103367859805343474
+--- !u!50 &-6785549896481363252
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8103367859805343478}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &135472417128195558
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,6 +154,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8103367859805343478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71d55fb4d7f495944887206b2c1bc7db, type: 3}
+  m_Script: {fileID: 11500000, guid: a9c1bdac56d2fbe4ca555b173aa13b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

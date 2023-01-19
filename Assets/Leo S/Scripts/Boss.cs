@@ -27,31 +27,30 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        anim.SetInteger("state", (int)state);
 
         attackTimer += Time.deltaTime;
         if(attackTimer > 3)
         {
-            state = State.attack;
             StartCoroutine(Attacks());
             attackTimer = 0;
         }
-        if (health <= 0)
-        {
-            state = State.death;
-        }
+       
         StateSwitch();
+        anim.SetInteger("state", (int)state);
+
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Bullet")
         {
-            state = State.hurt;
             TakeDamage();
         }
+
     }
     void TakeDamage()
     {
+        state = State.hurt;
         health -= 1;
     }
     void Attack()
@@ -62,14 +61,29 @@ public class Boss : MonoBehaviour
         Vector2 direction = myPos - (Vector2)target.position; //get the direction to the target
         projectile.GetComponent<Rigidbody2D>().velocity = -direction * launchForce;
     }
-    private void StateSwitch()
+    public void StateSwitch()
     {
-        state = State.idle;
+        if (health <= 0)
+        {
+            health = 0;
+            state = State.death;
+            StartCoroutine(Die());
+        }
+        else
+        {
+            state = State.idle;
+        }
     }
     public IEnumerator Attacks()
     {
+        state = State.attack;
         yield return new WaitForSeconds(0.4f);
         Attack();
+    }
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(.45f);
+        Destroy(gameObject);
     }
 
 

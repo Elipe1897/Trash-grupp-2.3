@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 1584150826027615751}
   - component: {fileID: 1584150826027615744}
   - component: {fileID: 1584150826027615750}
-  - component: {fileID: 1584150826027615749}
+  - component: {fileID: -5177013255442530261}
+  - component: {fileID: -2503308435339269523}
   m_Layer: 0
   m_Name: Soda_Can
-  m_TagString: Untagged
+  m_TagString: Aj
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +95,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -120,7 +121,28 @@ PolygonCollider2D:
       - {x: 0.20490803, y: -0.009815977}
       - {x: 0.15460132, y: 0.12018401}
       - {x: 0.10969328, y: 0.12484664}
---- !u!114 &1584150826027615749
+--- !u!50 &-5177013255442530261
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584150826027615745}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &-2503308435339269523
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -129,6 +151,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1584150826027615745}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71d55fb4d7f495944887206b2c1bc7db, type: 3}
+  m_Script: {fileID: 11500000, guid: a9c1bdac56d2fbe4ca555b173aa13b6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

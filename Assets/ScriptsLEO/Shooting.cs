@@ -30,7 +30,7 @@ public class Shooting : MonoBehaviour
         transform.right = direction;
 
         //Reload
-        if (Ammo == 0 && (Input.GetKeyDown(KeyCode.R)))
+        if (Ammo >= 0 && (Input.GetKeyDown(KeyCode.R)))
         {
             StartCoroutine(ReloadingTrue());
         }
