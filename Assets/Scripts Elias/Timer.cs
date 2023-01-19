@@ -19,7 +19,8 @@ public class Timer : MonoBehaviour
     [SerializeField]
     public float leadertime = 0.0f; // leadertime starts at 0
 
-    private bool isTimer = false; // sets varible isTimer = false 
+    private bool isTimer = false; // sets varible isTimer = false
+    private bool isPause = false; // sets varible for pause to false
 
     private void Start()
     {
@@ -43,7 +44,7 @@ public class Timer : MonoBehaviour
             timer += Time.deltaTime;
             Displaytime();
         }
-        if (leadertime > timer) // Looks if score is higher than highscore - Elias
+        if (leadertime < timer) // Looks if score is higher than highscore - Elias
         {
             PlayerPrefs.SetInt("Best Time", (int)timer);
         }
@@ -59,7 +60,7 @@ public class Timer : MonoBehaviour
     {
         int minutes = Mathf.FloorToInt(leadertime / 60f);
         int seconds = Mathf.FloorToInt(leadertime - minutes * 60);   // if seconds > 60 then minutes becomes 1 
-        textLeaderTime.text = string.Format("Best Time: " + "{0:00}:{1:00}", minutes, seconds);
+        textLeaderTime.text = string.Format("Best Time: " + "{0:00}:{1:00}", minutes, seconds); // Makes minutes at the left side of ":" and seconds right of the ":" 
     }
     public void Stoptimer()
     {
@@ -73,8 +74,16 @@ public class Timer : MonoBehaviour
 
     public void PauseTime()
     {
-
-        Time.timeScale = 0f;
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+           Time.timeScale = 0f;
+            isPause = true;
+        }
+      if(Input.GetKeyDown(KeyCode.Escape) && isPause == true)
+        {
+            Time.timeScale = 1f;
+            isPause = false;
+        }
 
     }
 }
