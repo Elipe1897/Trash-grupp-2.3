@@ -1037,7 +1037,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298734156}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.8799996, y: 4.26, z: 7}
+  m_LocalPosition: {x: -2.17, y: 4.26, z: 7}
   m_LocalScale: {x: 2.67313, y: 2.67313, z: 2.67313}
   m_Children: []
   m_Father: {fileID: 1102016849}
@@ -1896,7 +1896,7 @@ Transform:
   m_GameObject: {fileID: 516985642}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 47.88, y: -6.1831455, z: 15.51337}
-  m_LocalScale: {x: 17.054426, y: 0.3856895, z: 1}
+  m_LocalScale: {x: 23.663017, y: 0.3856895, z: 1}
   m_Children: []
   m_Father: {fileID: 1474854286}
   m_RootOrder: 20
@@ -2269,6 +2269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff538ff4293d4f47b9f754b7263c6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jumpSoundEffect: {fileID: 0}
   fHorizontalDampingBasic: 0.35
   fHorizontalDampingWhenStopping: 0.35
   jumpVelocity: 5
