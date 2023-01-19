@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
 
     public bool assHat;
 
+
     public float speed;
     public float nextWaypointDistance = 3f;
 

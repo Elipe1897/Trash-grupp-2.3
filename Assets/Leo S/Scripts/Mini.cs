@@ -8,13 +8,13 @@ public class Mini : EnemyAI
 
     public int health;
 
+
     private enum State { idle,hurt,death};
     private State state = State.idle;
     // Start is called before the first frame update
     void Start()
     {
         speed = 5;
-        launchForce = 100;
     }
 
     // Update is called once per frame
