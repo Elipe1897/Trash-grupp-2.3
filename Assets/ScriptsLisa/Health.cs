@@ -14,6 +14,8 @@ public class Health : MonoBehaviour
     public GameObject Heart2;
     public GameObject Heart1;
 
+    [SerializeField] private AudioSource damageSoundEffect; 
+
     private void Awake()
     {
         instance = this; 
@@ -31,17 +33,21 @@ public class Health : MonoBehaviour
         
         if (currentHealth == 0)              //När man har 0 liv kvar så dör man-Lisa
         {
-            Destroy(gameObject);
+            
+            //Destroy(gameObject);
             Destroy(Heart1);
-            // transform.position = new Vector3(-20, 20, 0);
+            
+            transform.position = new Vector3(20, -5, 0);
         }
         if (currentHealth == 2)              //ett hjärta försvinner när man tappar ett liv
         {
+
             Destroy(Heart3);
             
         }
         if (currentHealth == 1)              
         {
+            
             Destroy(Heart2);
             
         }
@@ -51,12 +57,22 @@ public class Health : MonoBehaviour
         if (collision.transform.tag == "Aj")
         {
             Health.instance.TakeDamage();
+         
         }
+
+        if (collision.transform.tag == "die")
+        {
+            
+            damageSoundEffect.Play();
+        }
+
     }
+
+    
     public void TakeDamage()
     {
         currentHealth -= 1; // gör så att man förlorar liv-Lisa
     }
 
-
+    
 }

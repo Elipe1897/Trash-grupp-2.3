@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    [SerializeField] private AudioSource jumpSoundEffect; 
+
     Rigidbody2D rb;
     [Header("Moving")]
     [SerializeField, Range(0, 1)]
@@ -100,11 +102,14 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
             jumpBufferCounter = 0;
+            jumpSoundEffect.Play(); //om man hoppar så spelas hopp ljudet-Lisa
         }
         if (Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0)
         {
+            
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
             coyoteTimeCounter = 0;
+            
         }
     }
 
