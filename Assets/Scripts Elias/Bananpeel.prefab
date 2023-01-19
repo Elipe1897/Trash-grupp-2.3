@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5549439014465908789}
   - component: {fileID: 5549439014465908790}
   - component: {fileID: 5549439014465908791}
+  - component: {fileID: -4523655217337958129}
   m_Layer: 0
   m_Name: Bananpeel
   m_TagString: Scrap
@@ -124,3 +125,15 @@ PolygonCollider2D:
       - {x: -0.03862054, y: -0.044567943}
       - {x: 0.047241084, y: -0.09456794}
       - {x: 0.124567956, y: -0.11431027}
+--- !u!114 &-4523655217337958129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5549439014465908784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecd7da0a9aac01a4c868f8eec5c6f0d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
