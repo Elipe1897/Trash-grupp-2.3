@@ -36,7 +36,6 @@ public class Health : MonoBehaviour
             //Destroy(gameObject);
             Destroy(Heart1);
             
-            transform.position = new Vector3(20, -5, 0);
         }
         if (currentHealth == 2)              //ett hj�rta f�rsvinner n�r man tappar ett liv
         {
