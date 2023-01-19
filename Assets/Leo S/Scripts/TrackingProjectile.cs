@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class EnemyAI : MonoBehaviour
+public class TrackingProjectile : MonoBehaviour
 {
+    [Header("Movement")]
     public Transform target;
-    public Transform enemyGFX;
 
-    public bool assHat;
+    public float nextWaypointDistance = 3f;
 
     public float speed;
-    public float nextWaypointDistance = 3f;
 
     Path path;
 
     int currentWaypoint;
     bool reachedWaypoint;
+
 
     Seeker seeker;
     Rigidbody2D rb;
@@ -27,18 +27,17 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
-        
     }
 
     void UpdatePath()
     {
-        if(seeker.IsDone())
+        if (seeker.IsDone())
             seeker.StartPath(rb.position, target.position, OnPathComplete);
     }
 
     void OnPathComplete(Path p)
     {
-        if(!p.error)
+        if (!p.error)
         {
             path = p;
             currentWaypoint = 0;
@@ -64,49 +63,25 @@ public class EnemyAI : MonoBehaviour
 
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-        Debug.Log(direction);
-
         float targetDistance = Vector2.Distance(rb.position, target.position);
 
-        if(targetDistance <= 7.5f)
-        {
-            rb.AddForce(force);
-        }
+         rb.AddForce(force); 
 
-        Debug.Log(targetDistance);
-        if(distance < nextWaypointDistance)
+        if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
 
-        if(force.x >= 0.01f)
+        if (force.x >= -0.01f)
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
-        else if(force.x <= 0.01f)
+        else if (force.x <= 0.01f)
         {
             transform.localScale = new Vector3(1, 1, 1);
         }
 
-        if(assHat == true)
-        {
-            rb.AddForce(new Vector2(0, 25));
-        }
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "Obstacle")
-        {
-            assHat = true;
-        }
-        
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "Obstacle")
-        {
-            assHat = false;
-        }
-    }
+
 
 }

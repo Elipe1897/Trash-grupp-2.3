@@ -9,7 +9,8 @@ TagManager:
   - Scrap
   - Aj
   - Ladder
-  - Ground
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX

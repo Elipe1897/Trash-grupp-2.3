@@ -12,7 +12,7 @@ public class ScoreManagement : MonoBehaviour
 
     public int Scrap;
     public Text ScrapText;
-    public GameObject Scraps;
+   
     // varibles for Score, Trash and time and text
 
     public void Awake()
@@ -27,7 +27,6 @@ public class ScoreManagement : MonoBehaviour
     {
         CoinsText.text = " COINS: " + Coins.ToString();
         ScrapText.text = " SCRAP: " + Scrap.ToString();
-
 
     }
 
@@ -49,7 +48,6 @@ public class ScoreManagement : MonoBehaviour
     {
         Scrap += point;
         ScrapText.text = " SCRAP: " + Scrap.ToString();
-        Destroy(Scraps);
         Debug.Log(Scrap);
     }
 
