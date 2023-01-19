@@ -156,7 +156,7 @@ public class PlayerController_1 : MonoBehaviour
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(.75f);
-        Destroy(gameObject);
+        transform.position = new Vector3(20, -5, 0);
     }
-   
+
 }

@@ -48,6 +48,8 @@ public class Timer : MonoBehaviour
         {
             PlayerPrefs.SetInt("Best Time", (int)timer);
         }
+        
+        
     }
 
     void Displaytime()
@@ -72,20 +74,7 @@ public class Timer : MonoBehaviour
         timer = 0.0f; // sets timer = 0 
     }
 
-    public void PauseTime()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-           Time.timeScale = 0f;
-            isPause = true;
-        }
-      if(Input.GetKeyDown(KeyCode.Escape) && isPause == true)
-        {
-            Time.timeScale = 1f;
-            isPause = false;
-        }
-
-    }
+   
 }
 /* 
  

@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - Enemy
   - Ground
+  - die
   layers:
   - Default
   - TransparentFX
