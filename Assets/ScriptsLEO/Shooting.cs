@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
+    public static Shooting instance;
     public int Ammo;
     public bool Reloading;
-    public float DMG = 5;
+    public float DMG = 1;
 
     public GameObject Bullet;
     public GameObject FireEffect;
@@ -14,6 +15,11 @@ public class Shooting : MonoBehaviour
     public GameObject FirePoint;
 
     public Text AmmoText;
+
+    public void Awake()
+    {
+        instance = this;
+    }
     public void Start()
     {
         Ammo = 30;
