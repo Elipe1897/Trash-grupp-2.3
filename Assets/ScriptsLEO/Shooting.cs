@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
+    [SerializeField] private AudioSource shootingSoundEffect;
     public int Ammo;
     public bool Reloading;
     public float DMG = 5;
@@ -51,6 +52,7 @@ public class Shooting : MonoBehaviour
                // StartCoroutine(RecoilTrue());
                 Debug.Log("Recoil!");
                 AmmoText.text = Ammo.ToString() + "/30";
+                shootingSoundEffect.Play();
             }
 
         }

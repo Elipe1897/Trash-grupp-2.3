@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
+    [SerializeField] private AudioSource bossSoundEffect;
     public Transform target;
 
     public GameObject [] scrap;
