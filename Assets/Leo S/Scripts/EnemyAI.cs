@@ -80,26 +80,22 @@ public class EnemyAI : MonoBehaviour
         float targetDistance = Vector2.Distance(rb.position, target.position);
 
 
-        if (targetDistance <= 2f)
-        {
-            attackTimer += .15f;
 
-        }
+        attackTimer += Time.deltaTime;
+
+        
         if(targetDistance >= 4f)
         {
             attackTimer = 0;
         }
-      if(attackTimer >= 2)
+        if(attackTimer >= 2)
         {
             Attack();
             attackTimer = 0;
         }
 
 
-        if (targetDistance <= 9f)
-        {
-            rb.AddForce(force);
-        }
+         rb.AddForce(force);
 
         if(distance < nextWaypointDistance)
         {

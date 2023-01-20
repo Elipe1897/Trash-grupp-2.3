@@ -54,6 +54,7 @@ public class Boss : MonoBehaviour
     {
         state = State.hurt;
         health -= 1;
+      //  health -= (int)Shooting.instace.DMG;
     }
     void Attack()
     {

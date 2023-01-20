@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1316642789779033783}
   - component: {fileID: 2055439246184821210}
   - component: {fileID: 8231811248429689971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spider
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -204,3 +204,4 @@ MonoBehaviour:
   nextWaypointDistance: 3
   anim: {fileID: 1316642789779033783}
   health: 10
+  attackTimer: 0
