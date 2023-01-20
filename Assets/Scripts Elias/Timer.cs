@@ -49,7 +49,6 @@ public class Timer : MonoBehaviour
             PlayerPrefs.SetInt("Best Time", (int)timer);
         }
         
-        
     }
 
     void Displaytime()

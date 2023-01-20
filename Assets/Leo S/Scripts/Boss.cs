@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -84,6 +85,7 @@ public class Boss : MonoBehaviour
     {
         yield return new WaitForSeconds(.45f);
         Destroy(gameObject);
+        SceneManager.LoadScene("Victory");
     }
 
 

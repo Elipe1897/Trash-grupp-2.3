@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/Death.unity
+    guid: b9b1af845b9e43b4d9c705f8642b6f45
+  - enabled: 1
+    path: Assets/Scenes/Victory.unity
+    guid: 431ae69dce0301a4f84bdfd770566989
+  - enabled: 1
     path: Assets/Scenes/TextScene.unity
     guid: 8da9ac8cdc6b6814688a0eae045c12f4
   - enabled: 1
-    path: Assets/Scenes/LevelOne.unity
-    guid: 633b1b9482781514388656916bf62b2d
-  - enabled: 1
-    path: Assets/Scenes/Enemy.unity
-    guid: ce08748682827e248ba58d8168e89699
+    path: Assets/Scenes/Movement test.unity
+    guid: a02fd6c9b083ce641b0b978504936a40
   m_configObjects: {}

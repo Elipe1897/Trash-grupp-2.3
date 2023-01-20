@@ -48,7 +48,7 @@ public class Shooting : MonoBehaviour
                 Debug.Log("FIRE!");
                 Instantiate(FireEffect, FirePoint.transform.position, Quaternion.identity);
                 Debug.Log("Effect!");
-                StartCoroutine(RecoilTrue());
+               // StartCoroutine(RecoilTrue());
                 Debug.Log("Recoil!");
                 AmmoText.text = Ammo.ToString() + "/30";
             }

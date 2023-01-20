@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    private enum State { idle, run, jump, hurt, death };
+    private State state = State.idle;
+
+    public Animator anim;
+
+
+    Health health;
     [SerializeField] private AudioSource jumpSoundEffect; 
 
     Rigidbody2D rb;
@@ -39,6 +46,9 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
+        StateSwitch();
+        anim.SetInteger("states", (int)state);
+
         if (IsGrounded()) { coyoteTimeCounter = coyoteTimer; }
         else { coyoteTimeCounter -= Time.deltaTime; }
         if (Input.GetKeyDown(KeyCode.W)) { jumpBufferCounter = jumpBufferTime; }
@@ -145,23 +155,50 @@ public class Movement : MonoBehaviour
             TouchScrap = false;
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Aj")
+        {
+            Health.instance.TakeDamage();
 
-    /* private void OnTriggerStay2D(Collider2D collision)
-     {
-         if(collision.transform.tag == "Bin")
-         {
-             if (Input.GetKeyDown(KeyCode.E))
-             {
-                 ScoreManagement.instance.AddPoint(1);
-             }
-         }
-         if(collision.transform.tag == "Scrap")
-         {
-             if (Input.GetKeyDown(KeyCode.Mouse0))
-             {
-                 ScoreManagement.instance.AddSCrap(1);
-             }
-         }
-     }*/
+
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Enemy" || collision.transform.tag == "Aj")
+        {
+            state = State.hurt;
+        }
+    }
+    private void StateSwitch()
+    {
+        if (health.currentHealth > 0)
+        {
+            if (rb.velocity.x >= 0.1)
+            {
+                state = State.run;
+            }
+            else if (rb.velocity.x <= -0.1)
+            {
+                state = State.run;
+            }
+            else
+            {
+                state = State.idle;
+            }
+        }
+        else if (health.currentHealth == 0)
+        {
+            state = State.death;
+            StartCoroutine(Die());
+        }
+    }
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(.75f);
+        transform.position = new Vector3(20, -5, 0);
+    }
+
 
 }
