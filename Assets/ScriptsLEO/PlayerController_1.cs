@@ -7,6 +7,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController_1 : MonoBehaviour
 {
+    [SerializeField] private AudioSource playerdieSoundEffect;
+    [SerializeField] private AudioSource coinSoundEffect;
+    [SerializeField] private AudioSource backgroundSoundEffect;
+    [SerializeField] private AudioSource hoppSoundEffect;
     private enum State { idle,run, jump, hurt, death };
     private State state = State.idle;
 
@@ -70,7 +74,9 @@ public class PlayerController_1 : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
+                coinSoundEffect.Play();
                 ScoreManagement.instance.AddPoint(ScoreManagement.instance.Scrap);
+                
             }
         }
         if (TouchScrap == true)
@@ -118,6 +124,7 @@ public class PlayerController_1 : MonoBehaviour
         }
         if(Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0)
         {
+            hoppSoundEffect.Play();
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
             coyoteTimeCounter = 0;
         }
@@ -168,6 +175,7 @@ public class PlayerController_1 : MonoBehaviour
     {
         if(collision.transform.tag == "Enemy"|| collision.transform.tag =="Aj")
         {
+            playerdieSoundEffect.Play();
             state = State.hurt;
         }
     }
@@ -190,14 +198,18 @@ public class PlayerController_1 : MonoBehaviour
         }
         else if (health.currentHealth == 0)
         {
+            
             state = State.death;
             StartCoroutine(Die());
         }
     }
     public IEnumerator Die()
     {
+        
+    
         yield return new WaitForSeconds(.75f);
-        transform.position = new Vector3(20, -5, 0);
+       // transform.position = new Vector3(-85, -5, 0);
+       
         SceneManager.LoadScene("Death");
     }
 

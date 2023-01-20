@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    
     public static Health instance;
     public int maxHealth = 3;
     public int currentHealth;
@@ -58,11 +59,11 @@ public class Health : MonoBehaviour
          
         }
 
-        if (collision.transform.tag == "die")
+       /* if (collision.transform.tag == "die")
         {
             
-            damageSoundEffect.Play();
-        }
+            playerdieSoundEffect.Play();
+        }*/
 
     }
 

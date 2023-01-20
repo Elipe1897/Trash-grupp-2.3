@@ -4,10 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
-    public static Shooting instance;
+    [SerializeField] private AudioSource shootingSoundEffect;
     public int Ammo;
     public bool Reloading;
-    public float DMG = 1;
+    public float DMG = 5;
 
     public GameObject Bullet;
     public GameObject FireEffect;
@@ -15,11 +15,6 @@ public class Shooting : MonoBehaviour
     public GameObject FirePoint;
 
     public Text AmmoText;
-
-    public void Awake()
-    {
-        instance = this;
-    }
     public void Start()
     {
         Ammo = 30;
@@ -57,6 +52,7 @@ public class Shooting : MonoBehaviour
                // StartCoroutine(RecoilTrue());
                 Debug.Log("Recoil!");
                 AmmoText.text = Ammo.ToString() + "/30";
+                shootingSoundEffect.Play();
             }
 
         }
