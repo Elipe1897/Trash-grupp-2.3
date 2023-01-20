@@ -35,7 +35,7 @@ public class EnemyAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-
+        target = GameObject.FindWithTag("Player").transform;
         InvokeRepeating("UpdatePath", 0f, .5f);
         
     }
@@ -96,7 +96,7 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        if (targetDistance <= 7.5f)
+        if (targetDistance <= 9f)
         {
             rb.AddForce(force);
         }
@@ -161,6 +161,7 @@ public class EnemyAI : MonoBehaviour
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(.4f);
+        EnemySpawn.instance.killCount++;
         Destroy(gameObject);
     }
     void Attack()
