@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController_1 : MonoBehaviour
 {
@@ -39,6 +41,8 @@ public class PlayerController_1 : MonoBehaviour
 
     public Text ScrapsText;
 
+    public bool TouchBin;
+    public bool TouchScrap;
 
     private void Start()
     {
@@ -61,6 +65,18 @@ public class PlayerController_1 : MonoBehaviour
 
       
         Flip();
+
+        if (TouchBin == true)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                ScoreManagement.instance.AddPoint(ScoreManagement.instance.Scrap);
+            }
+        }
+        if (TouchScrap == true)
+        {
+            ScoreManagement.instance.AddSCrap(1);
+        }
     }
     private void FixedUpdate()
     {
@@ -113,6 +129,31 @@ public class PlayerController_1 : MonoBehaviour
          RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
         return raycastHit.collider != null;
    }
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Bin")
+        {
+            TouchBin = true;
+        }
+
+        if (collision.transform.tag == "Scrap")
+        {
+            TouchScrap = true;
+        }
+
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Bin")
+        {
+            TouchBin = false;
+        }
+
+        if (collision.transform.tag == "Scrap")
+        {
+            TouchScrap = false;
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -157,6 +198,7 @@ public class PlayerController_1 : MonoBehaviour
     {
         yield return new WaitForSeconds(.75f);
         transform.position = new Vector3(20, -5, 0);
+        SceneManager.LoadScene("Death");
     }
 
 }

@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - Ground
   - die
+  - WaitWave
   layers:
   - Default
   - TransparentFX
