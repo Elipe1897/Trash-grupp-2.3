@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5270803408248429855}
   - component: {fileID: 5270803408248429850}
   - component: {fileID: 5270803408248429851}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Boss
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5270803408266106188}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

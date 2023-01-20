@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
+    public static Shooting instace;
+
     public int Ammo;
     public bool Reloading;
     public float DMG = 5;
@@ -14,6 +16,11 @@ public class Shooting : MonoBehaviour
     public GameObject FirePoint;
 
     public Text AmmoText;
+
+    public void Awake()
+    {
+        instace = this;
+    }
     public void Start()
     {
         Ammo = 30;

@@ -5,6 +5,15 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public ParticleSystem ps;
+    public float aliveTime;
+    private void Update()
+    {
+        aliveTime += Time.deltaTime;
+        if(aliveTime > 2.5f)
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Enemy")
