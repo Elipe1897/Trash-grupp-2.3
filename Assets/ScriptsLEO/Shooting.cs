@@ -5,6 +5,10 @@ using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
     public static Shooting instance;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 08b0037da2d8bce4e7af3c95a227bd12ee45c0dd
     [SerializeField] private AudioSource shootingSoundEffect;
     public int Ammo;
     public bool Reloading;
@@ -18,6 +22,7 @@ public class Shooting : MonoBehaviour
     public Text AmmoText;
     public void Start()
     {
+        instance = this;
         Ammo = 30;
         AmmoText.text = Ammo.ToString() + "/30"; 
     }
