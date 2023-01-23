@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Shooting : MonoBehaviour
 {
+    public static Shooting instance;
     [SerializeField] private AudioSource shootingSoundEffect;
     public int Ammo;
     public bool Reloading;

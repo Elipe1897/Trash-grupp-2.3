@@ -88,7 +88,7 @@ public class EnemyAI : MonoBehaviour
         {
             attackTimer = 0;
         }
-        if(attackTimer >= 2)
+        if(attackTimer >= .75f)
         {
             Attack();
             attackTimer = 0;
