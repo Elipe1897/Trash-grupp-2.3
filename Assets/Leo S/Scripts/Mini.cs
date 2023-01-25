@@ -12,14 +12,16 @@ public class Mini : EnemyAI
     private enum State { idle,hurt,death};
     private State state = State.idle;
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
+        base.Start();
         speed = 5;
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
+        base.Update();
         anim.SetInteger("state", (int)state);
         StateSwitch();
         if(health <= 0)

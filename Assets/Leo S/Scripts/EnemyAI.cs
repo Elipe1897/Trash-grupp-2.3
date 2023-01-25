@@ -31,7 +31,7 @@ public class EnemyAI : MonoBehaviour
     private enum State { idle, hurt, death };
     private State state = State.idle;
 
-    private void Start()
+    public virtual void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void Update()
+    public virtual void Update()
     {
         if (path == null)
             return;
@@ -69,31 +69,24 @@ public class EnemyAI : MonoBehaviour
             reachedWaypoint = false;
         }
 
+        attackTimer += Time.deltaTime * 3;
+
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
-
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        
 
         float targetDistance = Vector2.Distance(rb.position, target.position);
 
-
-
-        attackTimer += Time.deltaTime;
-
-        
-        if(targetDistance >= 4f)
+        if (targetDistance >= 3.5f)
         {
             attackTimer = 0;
         }
-        if(attackTimer >= .75f)
+        if(attackTimer >= 1)
         {
             Attack();
             attackTimer = 0;
         }
-
 
          rb.AddForce(force);
 
@@ -115,7 +108,6 @@ public class EnemyAI : MonoBehaviour
         {
             rb.AddForce(new Vector2(0, 25));
         }
-
 
         anim.SetInteger("state", (int)state);
         StateSwitch();
