@@ -8,6 +8,8 @@ public class StartTxt : MonoBehaviour
     public GameObject StartText;
     public GameObject ObjectiveText;
     public bool GameStarted = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,4 +36,5 @@ public class StartTxt : MonoBehaviour
         yield return new WaitForSeconds(5);
         ObjectiveText.SetActive(false);
     }
+
 }
