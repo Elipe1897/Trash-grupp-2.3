@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    [SerializeField] private AudioSource coinSoundEffect;
+    
     private enum State { idle, run, jump, hurt, death };
     private State state = State.idle;
 
@@ -75,7 +75,7 @@ public class Movement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E)  )
             {
                 ScoreManagement.instance.AddPoint(ScoreManagement.instance.Scrap);
-                coinSoundEffect.Play();
+                
             }
         }
         if(TouchScrap == true)
