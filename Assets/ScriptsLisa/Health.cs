@@ -34,21 +34,25 @@ public class Health : MonoBehaviour
         
         if (currentHealth == 0)              //N�r man har 0 liv kvar s� d�r man-Lisa
         {
-            //Destroy(gameObject);
-            Destroy(Heart1);
+            Heart1.SetActive(false);
             
         }
         if (currentHealth == 2)              //ett hj�rta f�rsvinner n�r man tappar ett liv
         {
-
-            Destroy(Heart3);
-            
+            Heart3.SetActive(false);
+            Heart1.SetActive(true);
+            Heart2.SetActive(true);
         }
         if (currentHealth == 1)              
         {
-            
-            Destroy(Heart2);
-            
+            Heart2.SetActive(false);
+            Heart1.SetActive(true);
+        }
+        if (currentHealth == 3)
+        {
+            Heart1.SetActive(true);
+            Heart2.SetActive(true);
+            Heart3.SetActive(true);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)    //om man nuddar en bullet s� f�rlorar man ett liv-Lisa
@@ -73,5 +77,12 @@ public class Health : MonoBehaviour
         currentHealth -= 1; // g�r s� att man f�rlorar liv-Lisa
     }
 
-    
+    public void AddHealth()
+    {
+        if(currentHealth < 3)
+        {
+            currentHealth++;
+        }
+        
+    }
 }

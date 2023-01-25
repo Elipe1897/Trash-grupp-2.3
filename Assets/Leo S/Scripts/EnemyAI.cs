@@ -158,6 +158,7 @@ public class EnemyAI : MonoBehaviour
     {
         yield return new WaitForSeconds(.4f);
         EnemySpawn.instance.killCount++;
+        WaveSystem.instance.EnemyKilled();
         Destroy(gameObject);
     }
     void Attack()
