@@ -48,6 +48,9 @@ public class PlayerController_1 : MonoBehaviour
     public bool TouchBin;
     public bool TouchScrap;
 
+    //public GameObject ExtraHeart1;
+   // public GameObject ExtraHeart2;
+   // public GameObject ExtraHeart3;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -136,7 +139,7 @@ public class PlayerController_1 : MonoBehaviour
          RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
         return raycastHit.collider != null;
    }
-    private void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.transform.tag == "Bin")
         {
@@ -147,7 +150,6 @@ public class PlayerController_1 : MonoBehaviour
         {
             TouchScrap = true;
         }
-
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -167,7 +169,7 @@ public class PlayerController_1 : MonoBehaviour
         if (collision.transform.tag == "Aj")
         { 
           Health.instance.TakeDamage();
-            
+          
 
         }
     }
