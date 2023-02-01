@@ -9815,7 +9815,6 @@ GameObject:
   - component: {fileID: 2124900524}
   - component: {fileID: 2124900523}
   - component: {fileID: 2124900526}
-  - component: {fileID: 2124900527}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -9856,7 +9855,7 @@ MonoBehaviour:
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
   m_Cameras: []
-  m_RendererIndex: -1
+  m_RendererIndex: 0
   m_VolumeLayerMask:
     serializedVersion: 2
     m_Bits: 1
@@ -9938,32 +9937,6 @@ MonoBehaviour:
   target: {fileID: 565094899}
   minPos: {x: -75, y: 0}
   maxPos: {x: 75, y: 0}
---- !u!114 &2124900527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2124900521}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d687537154440a3913a9a3c7977978c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CameraTarget: {fileID: 0}
-  FollowDistance: 30
-  MaxFollowDistance: 100
-  MinFollowDistance: 2
-  ElevationAngle: 30
-  MaxElevationAngle: 85
-  MinElevationAngle: 0
-  OrbitalAngle: 0
-  CameraMode: 0
-  MovementSmoothing: 1
-  RotationSmoothing: 0
-  MovementSmoothingValue: 25
-  RotationSmoothingValue: 5
-  MoveSensitivity: 2
 --- !u!4 &2133671527 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5549439014465908789, guid: 2cd7915ebc54035449196743f39ff7fb, type: 3}
