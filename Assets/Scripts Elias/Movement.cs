@@ -80,7 +80,8 @@ public class Movement : MonoBehaviour
         }
         if(TouchScrap == true)
         {
-            ScoreManagement.instance.AddSCrap(1);
+            ScoreManagement.instance.AddSCrap();
+            return;
         }
         
        

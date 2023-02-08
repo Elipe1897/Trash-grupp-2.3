@@ -44,9 +44,9 @@ public class ScoreManagement : MonoBehaviour
         Debug.Log(Coins);
         Debug.Log(Scrap);
     }
-    public void AddSCrap(int point)
+    public void AddSCrap()
     {
-        Scrap += point;
+        Scrap ++;
         ScrapText.text = Scrap.ToString();
         Debug.Log(Scrap);
     }
