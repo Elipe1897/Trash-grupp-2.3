@@ -29,12 +29,15 @@ public class Boss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        attackTimer += Time.deltaTime;
-        if(attackTimer > 3)
+        float targetDistance = Vector2.Distance(transform.position, target.position);
+        if (targetDistance < 10)
         {
-            StartCoroutine(Attacks());
-            attackTimer = 0;
+            attackTimer += Time.deltaTime;
+            if (attackTimer > 3)
+            {
+                StartCoroutine(Attacks());
+                attackTimer = 0;
+            }
         }
        
         StateSwitch();

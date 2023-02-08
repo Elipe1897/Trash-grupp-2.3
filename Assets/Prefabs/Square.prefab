@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -144,5 +144,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff538ff4293d4f47b9f754b7263c6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  rb: {fileID: 0}
+  coinSoundEffect: {fileID: 0}
+  anim: {fileID: 0}
+  jumpSoundEffect: {fileID: 0}
+  fHorizontalDampingBasic: 0
+  fHorizontalDampingWhenStopping: 0
+  jumpVelocity: 5
+  boxCollider: {fileID: 0}
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  TouchBin: 0
+  TouchScrap: 0

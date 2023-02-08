@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.transform.tag == "Enemy")
         {
-            Instantiate(ps, collision.transform.position, Quaternion.identity);
+            Instantiate(ps,collision.transform.position, Quaternion.identity);
             CameraShake.instance.Shake();
             Destroy(gameObject);
         }
