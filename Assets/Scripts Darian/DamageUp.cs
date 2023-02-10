@@ -23,6 +23,8 @@ public class DamageUp : MonoBehaviour
             Shooting.instance.DMG += 1;
             ScoreManagement.instance.Coins -= 10;
             print("Upgrade!");
+            ScoreManagement.instance.CoinsText.text = ScoreManagement.instance.Coins.ToString();
+            ScoreManagement.instance.ScrapText.text = ScoreManagement.instance.Scrap.ToString();
         }
     }
 }
