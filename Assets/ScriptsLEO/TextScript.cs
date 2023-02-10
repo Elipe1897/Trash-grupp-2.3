@@ -10,7 +10,7 @@ public class TextScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Movement test");
+            SceneManager.LoadScene("Testscene");
         }
     }
 }
