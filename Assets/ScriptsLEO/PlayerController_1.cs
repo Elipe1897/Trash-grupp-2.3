@@ -84,7 +84,7 @@ public class PlayerController_1 : MonoBehaviour
         }
         if (TouchScrap == true)
         {
-            ScoreManagement.instance.AddSCrap(1);
+            ScoreManagement.instance.AddSCrap();
         }
     }
     private void FixedUpdate()

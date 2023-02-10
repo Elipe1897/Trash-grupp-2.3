@@ -15,11 +15,17 @@ public class WaveSystem : MonoBehaviour
     public GameObject[] alien;
 
     public int EnemiesAlive;
-
+    public int rng;
+    public int random;
     void Start()
     {
         instance = this;
         StartCoroutine(SpawnWaves());
+    }
+    public void Update()
+    {
+        int rng = Random.Range(0, 10);
+        int random = Random.Range(0, 1);
     }
 
     IEnumerator SpawnWaves()
@@ -36,8 +42,6 @@ public class WaveSystem : MonoBehaviour
     }
     void Spawn()
     {
-        int rng = Random.Range(0, 10);
-        int random = Random.Range(0, 2);
         Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
         Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
         Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
