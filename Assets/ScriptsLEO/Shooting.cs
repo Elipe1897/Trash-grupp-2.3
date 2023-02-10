@@ -48,6 +48,7 @@ public class Shooting : MonoBehaviour
             {
                 Ammo--;
                 GameObject bullet = Instantiate(Bullet, new Vector3(FirePoint.transform.position.x, FirePoint.transform.position.y), FirePoint.transform.rotation);
+                Debug.Log(bullet);
                 bullet.GetComponent<Rigidbody2D>().velocity = transform.right * 10;
                 Debug.Log("FIRE!");
                 Instantiate(FireEffect, FirePoint.transform.position, Quaternion.identity);
