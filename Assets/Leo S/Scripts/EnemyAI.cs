@@ -7,9 +7,6 @@ public class EnemyAI : MonoBehaviour
 {
     public Transform target;
 
-    public bool assHat;
-
-
     public float speed;
     public float nextWaypointDistance = 3f;
 
@@ -25,8 +22,7 @@ public class EnemyAI : MonoBehaviour
 
     public int health;
 
-    public float attackTimer;
-
+    private bool isAttacking;
 
     private enum State { idle, hurt, death };
     private State state = State.idle;
@@ -69,8 +65,6 @@ public class EnemyAI : MonoBehaviour
             reachedWaypoint = false;
         }
 
-        attackTimer += Time.deltaTime * 3;
-
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
@@ -78,17 +72,12 @@ public class EnemyAI : MonoBehaviour
 
         float targetDistance = Vector2.Distance(rb.position, target.position);
 
-        if (targetDistance >= 3.5f)
+        if (targetDistance <= 3.5f && isAttacking == false)
         {
-            attackTimer = 0;
-        }
-        if(attackTimer >= 1)
-        {
-            Attack();
-            attackTimer = 0;
+            StartCoroutine(Attack());
         }
 
-         rb.AddForce(force);
+        rb.AddForce(force);
 
         if(distance < nextWaypointDistance)
         {
@@ -104,10 +93,6 @@ public class EnemyAI : MonoBehaviour
             transform.localScale = new Vector3(-3.7f, 3.7f, 3.7f);
         }
 
-        if(assHat == true)
-        {
-            rb.AddForce(new Vector2(0, 25));
-        }
 
         anim.SetInteger("state", (int)state);
         StateSwitch();
@@ -115,21 +100,6 @@ public class EnemyAI : MonoBehaviour
         {
             state = State.death;
             StartCoroutine(Die());
-        }
-    }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "Obstacle")
-        {
-            assHat = true;
-        }
-        
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.transform.tag == "Obstacle")
-        {
-            assHat = false;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -153,12 +123,16 @@ public class EnemyAI : MonoBehaviour
         WaveSystem.instance.EnemyKilled();
         Destroy(gameObject);
     }
-    void Attack()
+
+    public IEnumerator Attack()
     {
+        isAttacking = true;
+        yield return new WaitForSeconds(2.3f);
         Health.instance.TakeDamage();
+        Debug.Log("Ez no scope bozo");
+        isAttacking = false;
+
     }
-
-
     private void StateSwitch()
     {
         state = State.idle;
