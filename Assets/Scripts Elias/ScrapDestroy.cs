@@ -29,13 +29,19 @@ public class ScrapDestroy : MonoBehaviour
        
         
     }
-    public void OnCollisionEnter2D(Collision2D collision)
+
+    public void OnTriggerStay2D(Collider2D collision)
     {
          if (collision.transform.tag == "Player")
         {
             Destroy(gameObject);
-            ScoreManagement.instance.AddSCrap(1);
+            ScoreManagement.instance.AddSCrap();
+            return;
         }
     }
+   /* public void OnTriggerEnter2D(Collision2D collision)
+    {
+        
+    }*/
 
 }
