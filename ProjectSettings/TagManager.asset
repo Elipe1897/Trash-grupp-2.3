@@ -48,12 +48,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BackgroundBack
+    uniqueID: 3506432681
+    locked: 0
+  - name: Background
+    uniqueID: 2044073093
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Lights
-    uniqueID: 3120863821
-    locked: 0
-  - name: Objects
-    uniqueID: 2044073093
     locked: 0

@@ -1,108 +1,97 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spider : MonoBehaviour
 {
-    public static Spider instance;
-    private float currentHealth;
-    private float minHealth;
-
-
-    public BoxCollider2D collider2d;
-    float speed = 2f;
-    float chaseSpeed = 2.5f;
-
-    float minimumDistance;
-    float maximumDistance;
-
-    [Header("Transforms")]
-    public Transform groundCheck;
-    public Transform target;
+    [SerializeField] float moveSpeed;
 
     Rigidbody2D rb;
 
-    [Header("Layer masks")]
-    public LayerMask GroundLayer;
-    public LayerMask WallLayer;
+    public Transform target;
 
+    private bool isAttacking;
 
-
-    bool isFacingRight = true;
-
-    float attackPlayer;
-
-
-    RaycastHit2D hit;
-
-    public Animator animator;
-
-    float attackTimer;
+    public int health;
 
 
     private void Start()
     {
-        instance = this;
-
-        minHealth = 0;
-        currentHealth = 100;
-
-        maximumDistance = 8f;
-        minimumDistance = 1f;
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindWithTag("Player").transform;
 
     }
+
     private void Update()
     {
-        hit = Physics2D.Raycast(groundCheck.position, -transform.up, .6f, GroundLayer);
-        Debug.DrawRay(groundCheck.position, -transform.up * .6f, Color.red);
-        // If the player is to the right of the enemy and the enemy is facing left, or if the player is to the left of the enemy and the enemy is facing right, turn the enemy around
-
-
-        if (currentHealth == minHealth)
+        if(isFacingRight())
         {
-            Destroy(gameObject);
+            //move right
+            rb.velocity = new Vector2(moveSpeed, 0f);
         }
-        attackTimer += Time.deltaTime * 3;
-
-        Vector2 direction = (target.position - transform.position.normalized);
-        Vector2 force = direction * speed * Time.deltaTime;
-
+        else
+        {
+            //move left
+            rb.velocity = new Vector2(-moveSpeed, 0f);
+        }
         float targetDistance = Vector2.Distance(rb.position, target.position);
-
-        if (targetDistance >= 3.5f)
+        if (targetDistance <= 3.5f && isAttacking == false)
         {
-            attackTimer = 0;
+            moveSpeed = 0;
+            isAttacking = true;
+            StartCoroutine(Attack());            
         }
-        if (attackTimer >= 1)
+        else if (targetDistance >= 3.6f)
         {
-            Attack();
-            attackTimer = 0;
+            moveSpeed = 2;
+            isAttacking = false;
         }
-
-        if (force.x >= 0.01f)
+        if (health == 0)
         {
-            transform.localScale = new Vector3(3.7f, 3.7f, 3.7f);
-        }
-        else if (force.x <= 0.01f)
-        {
-            transform.localScale = new Vector3(-3.7f, 3.7f, 3.7f);
+            StartCoroutine(Die());
         }
     }
-    private void FixedUpdate()
+
+    private bool isFacingRight()
     {
-
+        return transform.localScale.x > Mathf.Epsilon;
     }
 
-    public void TakeDamage(int damage)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        currentHealth -= damage;
-        if (currentHealth <= minHealth)
+        if (collision.transform.tag == "Ground")
         {
-            currentHealth = minHealth;
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
         }
     }
 
-    void Attack()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Health.instance.TakeDamage();
+        if(collision.transform.tag == "Bullet")
+        {
+            TakeDamage();
+        }
     }
+    public IEnumerator Die()
+    {
+        yield return new WaitForSeconds(.4f);
+        EnemySpawn.instance.killCount++;
+        WaveSystem.instance.EnemyKilled();
+        Destroy(gameObject);
+    }
+    void TakeDamage()
+    {
+        health -= 1;
+    }
+    public IEnumerator Attack()
+    {
+        if (isAttacking == true)
+        {
+            yield return new WaitForSeconds(2.3f);
+            Health.instance.TakeDamage();
+            isAttacking = false;
+        }
+    }
+
 }

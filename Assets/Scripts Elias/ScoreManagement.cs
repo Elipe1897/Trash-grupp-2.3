@@ -58,13 +58,13 @@ public class ScoreManagement : MonoBehaviour
         Scrap -= Scrap;
         ScrapText.text = Scrap.ToString();
         Debug.Log(Coins);
-        Debug.Log(Scrap);
+        //Debug.Log(Scrap);
     }
     public void AddSCrap()
     {
         Scrap ++;
         ScrapText.text = Scrap.ToString();
-        Debug.Log(Scrap);
+        //Debug.Log(Scrap);
     }
     
 }
