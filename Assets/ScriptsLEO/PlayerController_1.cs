@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController_1 : MonoBehaviour
 {
+    public static PlayerController_1 instance;  
     [SerializeField] private AudioSource playerdieSoundEffect;
     [SerializeField] private AudioSource coinSoundEffect;
     [SerializeField] private AudioSource backgroundSoundEffect;
@@ -55,7 +56,7 @@ public class PlayerController_1 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
-
+        instance = this;
     }
     private void Update()
     {
@@ -85,6 +86,7 @@ public class PlayerController_1 : MonoBehaviour
         if (TouchScrap == true)
         {
             ScoreManagement.instance.AddSCrap();
+            
         }
     }
     private void FixedUpdate()
@@ -150,6 +152,7 @@ public class PlayerController_1 : MonoBehaviour
         {
             TouchScrap = true;
         }
+        
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
