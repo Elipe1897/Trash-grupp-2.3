@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1316642789779033786}
   - component: {fileID: 1316642789779033783}
   - component: {fileID: 8062854591401460821}
-  - component: {fileID: 799969091095036855}
+  - component: {fileID: 8215193875465206607}
+  - component: {fileID: 6841266138516883728}
   m_Layer: 7
   m_Name: Spider
   m_TagString: Enemy
@@ -184,7 +185,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.057029724, y: 0.30132204}
   m_EdgeRadius: 0
---- !u!114 &799969091095036855
+--- !u!114 &8215193875465206607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,9 +194,39 @@ MonoBehaviour:
   m_GameObject: {fileID: 1316642789779033784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ef27b645534504680459b3c56130ab, type: 3}
+  m_Script: {fileID: 11500000, guid: f316e535257e68f4d8dba1a43c8bd2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
   target: {fileID: 0}
-  health: 6
+  speed: 5
+  nextWaypointDistance: 3
+  anim: {fileID: 1316642789779033783}
+  health: 5
+--- !u!114 &6841266138516883728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1316642789779033784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1

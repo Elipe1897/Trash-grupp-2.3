@@ -12,22 +12,24 @@ public class PlayerController_1 : MonoBehaviour
     [SerializeField] private AudioSource coinSoundEffect;
     [SerializeField] private AudioSource backgroundSoundEffect;
     [SerializeField] private AudioSource hoppSoundEffect;
-    private enum State { idle,run, jump, hurt, death };
-    private State state = State.idle;
 
-    public Animator anim;
+    // Lisa ^^
+    private enum State { idle,run, jump, hurt, death };// leo s 
+    private State state = State.idle; // leo s 
 
-    public GameObject GFX;
+    public Animator anim; // Leo s 
 
-    Health health;
+    public GameObject GFX; // Leo s
 
-    Rigidbody2D rb;
-    [Header("Moving")]
+    Health health; // lisa
+
+    Rigidbody2D rb; //A varible for rigibody - Elias 
+    [Header("Moving")] // Head titel for the serializedfield - Elias
     [SerializeField, Range(0, 1)]
-    float fHorizontalDampingBasic, fHorizontalDampingWhenStopping;
+    float fHorizontalDampingBasic, fHorizontalDampingWhenStopping; // Varibles for the friction when moving - Elias 
 
     [Header("Jumping")]
-    public int jumpVelocity = 6;
+    public int jumpVelocity = 6; 
 
     private float gravityScale = 1;
     private float fallGravityMultiplier = 1.8f;
@@ -49,9 +51,13 @@ public class PlayerController_1 : MonoBehaviour
     public bool TouchBin;
     public bool TouchScrap;
 
-    //public GameObject ExtraHeart1;
-   // public GameObject ExtraHeart2;
-   // public GameObject ExtraHeart3;
+ // Varibles ^^ - Elias
+
+    public GameObject ExtraHeart1; // leo n
+    public GameObject ExtraHeart2; // Leo n 
+    public GameObject ExtraHeart3; // Leo n 
+     
+   
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -74,7 +80,7 @@ public class PlayerController_1 : MonoBehaviour
       
         Flip();
 
-        if (TouchBin == true)
+        if (TouchBin == true) // checks if Touchbin is true and then checks if key E is pressed down and if so run AddPoint funktion and coin sound - Elias
         {
             if (Input.GetKeyDown(KeyCode.E))
             {
@@ -83,7 +89,7 @@ public class PlayerController_1 : MonoBehaviour
                 
             }
         }
-        if (TouchScrap == true)
+        if (TouchScrap == true) // Checks if touchScrap is true of if its true its runs addScrap funktion - Elias
         {
             ScoreManagement.instance.AddSCrap();
             
@@ -98,18 +104,18 @@ public class PlayerController_1 : MonoBehaviour
 
     private void Move()
     {
-        //Mathf.abs makes negative numbers positive
-        //Mathf.abs takes one number and raises it to the power of another number
+        //Mathf.abs makes negative numbers positive  - Elias
+        //Mathf.abs takes one number and raises it to the power of another number - Elias
 
          float xVel = rb.velocity.x;
         xVel += Input.GetAxisRaw("Horizontal");
-        if(Mathf.Abs(Input.GetAxisRaw("Horizontal"))<.01f) //Checks if the player is slowing down 
-            xVel *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10f); // it dampens your speed when you stop moving so you stop faster
+        if(Mathf.Abs(Input.GetAxisRaw("Horizontal"))<.01f) //Checks if the player is slowing down - Elias
+            xVel *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10f); // it dampens your speed when you stop moving so you stop faster - Elias
         else
-            xVel *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10f); // it dampens your speed so you accelerate slower when you are faster 
+            xVel *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10f); // it dampens your speed so you accelerate slower when you are faster - Elias
         rb.velocity = new Vector2(xVel, rb.velocity.y);
     }
-    void Flip()
+    void Flip() // this changes the direktion your character is pointed to 
     {
         if (rb.velocity.x >= 0.1)
         {
@@ -141,7 +147,7 @@ public class PlayerController_1 : MonoBehaviour
          RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
         return raycastHit.collider != null;
    }
-    public void OnTriggerStay2D(Collider2D collision)
+    public void OnTriggerStay2D(Collider2D collision) // Sets TouchBin and Touchscrap true if the object collides with de right tag - Elias
     {
         if (collision.transform.tag == "Bin")
         {
@@ -154,7 +160,7 @@ public class PlayerController_1 : MonoBehaviour
         }
         
     }
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision) // Sets TouchBin and Touchscrap true if the object collides with de right tag - Elias
     {
         if (collision.transform.tag == "Bin")
         {
