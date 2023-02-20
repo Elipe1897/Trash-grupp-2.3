@@ -64,6 +64,7 @@ public class ScoreManagement : MonoBehaviour
     {
         Scrap ++;
         ScrapText.text = Scrap.ToString();
+        PlayerController_1.instance.TouchScrap = false;
         //Debug.Log(Scrap);
     }
     

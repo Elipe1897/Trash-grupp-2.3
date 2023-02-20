@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 1316642789779033786}
   - component: {fileID: 1316642789779033783}
   - component: {fileID: 8062854591401460821}
-  - component: {fileID: 2426817286822326882}
-  - component: {fileID: 2074869569994984786}
+  - component: {fileID: 8215193875465206607}
+  - component: {fileID: 6841266138516883728}
   m_Layer: 7
   m_Name: Spider
   m_TagString: Enemy
@@ -185,7 +185,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.057029724, y: 0.30132204}
   m_EdgeRadius: 0
---- !u!114 &2426817286822326882
+--- !u!114 &8215193875465206607
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -198,11 +198,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  speed: 3
+  speed: 5
   nextWaypointDistance: 3
   anim: {fileID: 1316642789779033783}
   health: 5
---- !u!114 &2074869569994984786
+--- !u!114 &6841266138516883728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
