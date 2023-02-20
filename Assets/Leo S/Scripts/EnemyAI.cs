@@ -74,6 +74,7 @@ public class EnemyAI : MonoBehaviour
 
         if (targetDistance <= 3.5f && isAttacking == false)
         {
+            print("attack");
             StartCoroutine(Attack());
         }
 
