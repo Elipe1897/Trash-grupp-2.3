@@ -53,32 +53,36 @@ public class PlayerController_1 : MonoBehaviour
 
  // Varibles ^^ - Elias
 
-    public GameObject ExtraHeart1; // leo n
+    public GameObject ExtraHeart1; // Leo n
     public GameObject ExtraHeart2; // Leo n 
     public GameObject ExtraHeart3; // Leo n 
      
    
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        health = GetComponent<Health>();
+        rb = GetComponent<Rigidbody2D>(); // Sets the rigibody component in the rb varible - Elias 
+        health = GetComponent<Health>(); // nån
         instance = this;
     }
     private void Update()
     {
-
+        // leo s
         StateSwitch();
         anim.SetInteger("states", (int)state);
 
+        /*checks if isGrounded funktion is true then if so its sets coyoteTimecounter to coyoteTimer which means after you leave 
+         The ground you have a small window to jump. But else it sets coyoteTimeCounter to -= time.deltatime.
+         then i checks if W is pressed and if so it checks jumpBufferCounter = jumpBufferTime basically if you can jump or not and if not
+         it counts down jumpbuffercounter with -= time.deltatime  - Elias */
         if (IsGrounded()) { coyoteTimeCounter = coyoteTimer; }
         else { coyoteTimeCounter -= Time.deltaTime; }
         if (Input.GetKeyDown(KeyCode.W)) { jumpBufferCounter = jumpBufferTime; }
         else { jumpBufferCounter -= Time.deltaTime; }
         
-        Jump();
+        Jump(); // runs the jump funktion - Elias
 
       
-        Flip();
+        Flip(); // runs the Flip funktion - Elias
 
         if (TouchBin == true) // checks if Touchbin is true and then checks if key E is pressed down and if so run AddPoint funktion and coin sound - Elias
         {
@@ -97,9 +101,12 @@ public class PlayerController_1 : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Move();
-       if(rb.velocity.y < 0) { rb.gravityScale = gravityScale * fallGravityMultiplier; }
-       else { rb.gravityScale = gravityScale; }
+        Move(); //Runs the move funktion - Elias
+        // if rb.velocity.y is less than zero it sets the rb.gravityscale of the rigidbody to gravityScale variable times the
+        // fallGravityMultiplier constant. - Elias
+        //then if rb.gravityscale.y is more than 0 its sets  rb.gravityScale = gravityScale - Elias
+        if (rb.velocity.y < 0) { rb.gravityScale = gravityScale * fallGravityMultiplier; }
+        else { rb.gravityScale = gravityScale; }
     }
 
     private void Move()
@@ -115,7 +122,7 @@ public class PlayerController_1 : MonoBehaviour
             xVel *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10f); // it dampens your speed so you accelerate slower when you are faster - Elias
         rb.velocity = new Vector2(xVel, rb.velocity.y);
     }
-    void Flip() // this changes the direktion your character is pointed to 
+    void Flip() // this changes the direktion your character is pointed to - Elias
     {
         if (rb.velocity.x >= 0.1)
         {
@@ -128,21 +135,26 @@ public class PlayerController_1 : MonoBehaviour
     }
     void Jump()
     {
+        //checks if coyoteTimeCounter and jumpBufferCounter are greater than 0 and if both are it sets the vertical velocity (y-axis) of the rigidbody component rb to jumpVelocity
+        //and therfore initiating a jump then it sets the jumpBufferCounter to 0 - Elias
         if (coyoteTimeCounter > 0 && jumpBufferCounter > 0)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpVelocity);
             jumpBufferCounter = 0;
         }
+        // When button W and the rb varibles velocity on the y.axis is bigger than zero than its velocity on the x axis remains the same
+        // and velocity on the y axis is set to half of its orignal speed  - Elias
         if(Input.GetKeyUp(KeyCode.W) && rb.velocity.y > 0)
         {
-            hoppSoundEffect.Play();
+            hoppSoundEffect.Play(); // lisa
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y / 2);
             coyoteTimeCounter = 0;
         }
     }
     
-    public bool IsGrounded()
-    {
+    public bool IsGrounded() // First it sets extraHeight varible to 0.1 to be able to detect coliders slighty over the raycast
+    {                        // basiclly checking if a 2D box collider attached to an object is currently touching a platform layer in the scene 
+                             // and lastly if raycastHit.colider is != null then it hit something oterwise - Elias
         float extraHeight = .1f;
          RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, extraHeight, platformLayerMask);
         return raycastHit.collider != null;
@@ -160,7 +172,7 @@ public class PlayerController_1 : MonoBehaviour
         }
         
     }
-    private void OnTriggerExit2D(Collider2D collision) // Sets TouchBin and Touchscrap true if the object collides with de right tag - Elias
+    private void OnTriggerExit2D(Collider2D collision) // Sets TouchBin and Touchscrap false if the object collides with de right tag - Elias
     {
         if (collision.transform.tag == "Bin")
         {
@@ -173,16 +185,15 @@ public class PlayerController_1 : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision) // nån
     {
         if (collision.transform.tag == "Aj")
         { 
           Health.instance.TakeDamage();
-          
-
+         
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision) // nån
     {
         if(collision.transform.tag == "Enemy"|| collision.transform.tag =="Aj")
         {
@@ -190,7 +201,7 @@ public class PlayerController_1 : MonoBehaviour
             state = State.hurt;
         }
     }
-    private void StateSwitch()
+    private void StateSwitch() // Leo s 
     {
         if (health.currentHealth > 0)
         {
@@ -214,7 +225,7 @@ public class PlayerController_1 : MonoBehaviour
             StartCoroutine(Die());
         }
     }
-    public IEnumerator Die()
+    public IEnumerator Die() // nån
     {
         
     
