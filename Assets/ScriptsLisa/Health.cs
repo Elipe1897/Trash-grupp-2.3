@@ -32,23 +32,26 @@ public class Health : MonoBehaviour
     void Update()
     {
         
-        if (currentHealth == 0)              //N�r man har 0 liv kvar s� d�r man-Lisa
+        if (currentHealth <= 0)              //N�r man har 0 liv kvar s� d�r man-Lisa
         {
             Heart1.SetActive(false);
-            
+            Heart2.SetActive(false);
+            Heart3.SetActive(false);
+            //Dör
         }
-        if (currentHealth == 2)              //ett hj�rta f�rsvinner n�r man tappar ett liv
+        else if (currentHealth <= 1)              
+        {
+            Heart3.SetActive(false);
+            Heart2.SetActive(false);
+            Heart1.SetActive(true);
+        }
+        else if (currentHealth <= 2)              //ett hj�rta f�rsvinner n�r man tappar ett liv
         {
             Heart3.SetActive(false);
             Heart1.SetActive(true);
             Heart2.SetActive(true);
         }
-        if (currentHealth == 1)              
-        {
-            Heart2.SetActive(false);
-            Heart1.SetActive(true);
-        }
-        if (currentHealth == 3)
+        else
         {
             Heart1.SetActive(true);
             Heart2.SetActive(true);

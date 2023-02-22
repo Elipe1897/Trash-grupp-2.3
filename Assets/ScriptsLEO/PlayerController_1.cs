@@ -56,8 +56,17 @@ public class PlayerController_1 : MonoBehaviour
     public GameObject ExtraHeart1; // Leo n
     public GameObject ExtraHeart2; // Leo n 
     public GameObject ExtraHeart3; // Leo n 
-     
-   
+
+    public GameObject PopUpText1;
+    public GameObject PopUpText2;
+    public GameObject PopUpText3;
+    public GameObject PopUpText4;
+    public GameObject PopUpText5;
+    public GameObject PopUpText6;
+    public GameObject PopUpText7;
+    public GameObject PopUpText8;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Sets the rigibody component in the rb varible - Elias 
@@ -170,7 +179,39 @@ public class PlayerController_1 : MonoBehaviour
         {
             TouchScrap = true;
         }
-        
+
+        if(collision.gameObject.name == "Soptunna1")
+        {
+            PopUpText1.SetActive(true);
+        }
+        if (collision.gameObject.name == "Soptunna2")
+        {
+            PopUpText2.SetActive(true);
+        }
+        if (collision.gameObject.name == "Soptunna3")
+        {
+            PopUpText3.SetActive(true);
+        }
+        if (collision.gameObject.name == "Soptunna4")
+        {
+            PopUpText4.SetActive(true);
+        }
+         if (collision.gameObject.name == "Soptunna5")
+        {
+            PopUpText5.SetActive(true);
+        }
+        if (collision.gameObject.name == "Soptunna6")
+        {
+            PopUpText6.SetActive(true);
+        }
+        if (collision.gameObject.name == "Soptunna7")
+        {
+            PopUpText7.SetActive(true);
+        }
+        if (collision.gameObject.name == "Soptunna8")
+        {
+            PopUpText8.SetActive(true);
+        }
     }
     private void OnTriggerExit2D(Collider2D collision) // Sets TouchBin and Touchscrap false if the object collides with de right tag - Elias
     {
@@ -182,6 +223,38 @@ public class PlayerController_1 : MonoBehaviour
         if (collision.transform.tag == "Scrap")
         {
             TouchScrap = false;
+        }
+        if (collision.gameObject.name == "Soptunna1")
+        {
+            PopUpText1.SetActive(false);
+        }
+         if (collision.gameObject.name == "Soptunna2")
+        {
+            PopUpText2.SetActive(false);
+        }
+         if (collision.gameObject.name == "Soptunna3")
+        {
+            PopUpText3.SetActive(false);
+        }
+         if (collision.gameObject.name == "Soptunna4")
+        {
+            PopUpText4.SetActive(false);
+        }
+         if (collision.gameObject.name == "Soptunna5")
+        {
+            PopUpText5.SetActive(false);
+        }
+         if (collision.gameObject.name == "Soptunna6")
+        {
+            PopUpText6.SetActive(false);
+        }
+         if (collision.gameObject.name == "Soptunna7")
+        {
+            PopUpText7.SetActive(false);
+        }
+         if (collision.gameObject.name == "Soptunna8")
+        {
+            PopUpText8.SetActive(false);
         }
     }
 
