@@ -5,52 +5,36 @@ public class WaveSystem : MonoBehaviour
 {
     public static WaveSystem instance;
 
-    public GameObject enemyPrefab;
-    public float spawnInterval = 30f;
-    public int numberOfWaves = 5;
+    public float spawnInterval;
 
-    private int waveCounter = 0;
+    public GameObject Wave1;
+    public GameObject Wave2;
+    public GameObject Wave3;
+    public GameObject WaveBoss;
 
-    public GameObject[] punkter;
-    public GameObject[] alien;
 
     public int EnemiesAlive;
-    public int rng;
-    public int random;
+
     void Start()
     {
         instance = this;
-        StartCoroutine(SpawnWaves());
-    }
-    public void Update()
-    {
-        int rng = Random.Range(0, 10);
-        int random = Random.Range(0, 1);
+        StartCoroutine(SpawnWaves1());
     }
 
-    IEnumerator SpawnWaves()
+    IEnumerator SpawnWaves1()
     {
-        while (waveCounter < numberOfWaves)
-        {
-            for (int i = 0; i < waveCounter; i++)
-            {
-                Spawn();
-            }
-            waveCounter++;
-            yield return new WaitForSeconds(spawnInterval);
-        }
-    }
-    void Spawn()
-    {
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
-        Instantiate(alien[random], punkter[rng].transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(spawnInterval);
+        Wave1.SetActive(true);
         EnemiesAlive += 8;
+        yield return new WaitForSeconds(spawnInterval);
+        Wave2.SetActive(true);
+        EnemiesAlive += 8;
+        yield return new WaitForSeconds(spawnInterval);
+        Wave3.SetActive(true);
+        EnemiesAlive += 8;
+        yield return new WaitForSeconds(spawnInterval);
+        WaveBoss.SetActive(true);
+        EnemiesAlive += 1;
     }
 
     public void EnemyKilled()
