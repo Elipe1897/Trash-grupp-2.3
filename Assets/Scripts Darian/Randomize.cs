@@ -26,7 +26,7 @@ public class Randomize : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer > 7)
+        if (timer > 10)
         {
             Instantiate(objects[Random.Range(0, objects.Length)], transform.position, Quaternion.identity);
             timer = 0;

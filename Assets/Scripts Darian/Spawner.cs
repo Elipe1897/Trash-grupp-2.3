@@ -6,14 +6,14 @@ public class Spawner : MonoBehaviour
 {
     public GameObject Enemy;
 
-    float maxSpawnRateInSeconds = 5f;
+    float maxSpawnRateInSeconds = 10f;
 
     // Start is called before the first frame update
     void Start()
     {
         Invoke("SpawnEnemy", maxSpawnRateInSeconds);
 
-        InvokeRepeating("IncreaseSpawnRate", 0f, 30f);
+        InvokeRepeating("IncreaseSpawnRate", 0f, 40f);
     }
 
     // Update is called once per frame
@@ -35,7 +35,7 @@ public class Spawner : MonoBehaviour
     void ScheduleNextEnemySpawn()
     {
         float spawnInNSeconds;
-        if (maxSpawnRateInSeconds > 1f)
+        if (maxSpawnRateInSeconds > 2f)
         {
             spawnInNSeconds = Random.Range(1f, maxSpawnRateInSeconds);
         }
@@ -45,10 +45,10 @@ public class Spawner : MonoBehaviour
     }
     void IncreaseSpawnRate()
     {
-        if (maxSpawnRateInSeconds > 1f)
+        if (maxSpawnRateInSeconds > 2f)
             maxSpawnRateInSeconds--;
 
-        if (maxSpawnRateInSeconds == 1f)
+        if (maxSpawnRateInSeconds == 2f)
             CancelInvoke("IncreaseSpawnRate");
     }
 }
