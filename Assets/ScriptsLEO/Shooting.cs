@@ -8,6 +8,8 @@ public class Shooting : MonoBehaviour
 
     [SerializeField] private AudioSource shootingSoundEffect;
     public int Ammo;
+    
+    public int NewAmmo;
     public bool Reloading;
     public float DMG = 5;
 
@@ -17,11 +19,14 @@ public class Shooting : MonoBehaviour
     public GameObject FirePoint;
 
     public Text AmmoText;
+
+    public bool AmmoUpgraded;
     public void Start()
     {
         instance = this;
         Ammo = 30;
-        AmmoText.text = Ammo.ToString() + "/30"; 
+        AmmoText.text = Ammo.ToString() + "/30";
+        AmmoUpgraded = false;
     }
 
 
@@ -55,7 +60,16 @@ public class Shooting : MonoBehaviour
                 Debug.Log("Effect!");
                // StartCoroutine(RecoilTrue());
                 Debug.Log("Recoil!");
-                AmmoText.text = Ammo.ToString() + "/30";
+                if (AmmoUpgraded == true)
+                {
+                    
+                    AmmoText.text = Ammo.ToString() + "/40";
+                }
+                else if (AmmoUpgraded == false)
+                {
+                    
+                    AmmoText.text = Ammo.ToString() + "/30";
+                }
                 shootingSoundEffect.Play();
             }
 
@@ -70,8 +84,18 @@ public class Shooting : MonoBehaviour
     }
     public IEnumerator ReloadingTrue()
     {
-        Ammo = 30;
-        AmmoText.text = Ammo.ToString() + "/30";
+        if(AmmoUpgraded == true)
+        {
+            Ammo = 40;
+            AmmoText.text = Ammo.ToString() + "/40";
+        }
+        else if(AmmoUpgraded == false)
+        {
+            Ammo = 30;
+            AmmoText.text = Ammo.ToString() + "/30";
+        }
+
+       
         Reloading = true;
         yield return new WaitForSeconds(1f);
         Reloading = false;

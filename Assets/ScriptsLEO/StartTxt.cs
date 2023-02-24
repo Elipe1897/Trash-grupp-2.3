@@ -21,8 +21,10 @@ public class StartTxt : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print("hej");
         if(Input.GetKeyDown(KeyCode.Space) && GameStarted == false)
         {
+            print("hej igen");
             GameStarted = true;
             StartText.SetActive(false);
             Time.timeScale = 1;
