@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+// Leo S
 
 public class CameraShake : MonoBehaviour
 {
@@ -18,12 +19,13 @@ public class CameraShake : MonoBehaviour
 	public float shakeAmount = 0.7f;
 	public float decreaseFactor = 1.0f;
 
-	Vector3 originalPos;
+	Vector3 originalPos; // the original position of hte camera
 
 	void Awake()
 	{
 		shakeDuration = 0f;
 		instance = this;
+		//refers the camTransform variable to the cameras transform
 		if (camTransform == null)
 		{
 			camTransform = GetComponent(typeof(Transform)) as Transform;
@@ -32,13 +34,16 @@ public class CameraShake : MonoBehaviour
 
 	void OnEnable()
 	{
+		//sets the original postition of the camera to infront of the player
 		originalPos = camTransform.localPosition;
 	}
 
 	void Update()
 	{
 		originalPos = camTransform.localPosition;
-
+		// if the shakeduration is more than 0 
+		//the screen shakes
+		//else the cam is set to the players position
 		if (shakeDuration > 0)
 		{
 			camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
@@ -53,6 +58,7 @@ public class CameraShake : MonoBehaviour
 
 
 	}
+	//sets the shakeduration to .1f so that the screen shakes
 	public void Shake()
 	{
 		shakeDuration = 0.1f;
