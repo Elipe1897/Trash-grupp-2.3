@@ -67,20 +67,24 @@ public class EnemyAI : MonoBehaviour
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
+        rb.AddForce(force);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
         float targetDistance = Vector2.Distance(rb.position, target.position);
 
-        if (targetDistance <= 3.5f && isAttacking == false)
+        if (targetDistance <= 2f && isAttacking == false)
         {
             print("attack");
             StartCoroutine(Attack());
         }
+        if (targetDistance >= 2f)
+        {
+            isAttacking = false;
+        }
 
-        rb.AddForce(force);
 
-        if(distance < nextWaypointDistance)
+        if (distance < nextWaypointDistance)
         {
             currentWaypoint++;
         }
@@ -128,10 +132,13 @@ public class EnemyAI : MonoBehaviour
     public IEnumerator Attack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(2.3f);
-        Health.instance.TakeDamage();
-        Debug.Log("Ez no scope bozo");
-        isAttacking = false;
+        if (isAttacking)
+        {
+            yield return new WaitForSeconds(2.3f);
+            Health.instance.TakeDamage();
+            Debug.Log("Ez no scope bozo");
+            isAttacking = false;
+        }
 
     }
     private void StateSwitch()

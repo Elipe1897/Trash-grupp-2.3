@@ -75,10 +75,3 @@ public class Timer : MonoBehaviour
 
    
 }
-/* 
- 
-highscore = PlayerPrefs.GetInt("HIGHSCORE", 0);
-scoreText.text = "| POINTS: " + score.ToString() + " |  ";
-highscoreText.text = "| HIGHSCORE: " + highscore.ToString() + " | ";
-
-*/
