@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    
     private enum State { idle, run, jump, hurt, death };
     private State state = State.idle;
 

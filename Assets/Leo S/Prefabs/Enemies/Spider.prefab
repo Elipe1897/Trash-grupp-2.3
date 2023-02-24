@@ -174,7 +174,7 @@ MonoBehaviour:
   speed: 500
   nextWaypointDistance: 3
   anim: {fileID: 8755372953077576561, guid: 61ded426c6ca16143ab53100ced32d8a, type: 3}
-  health: 35
+  health: 5
 --- !u!114 &6841266138516883728
 MonoBehaviour:
   m_ObjectHideFlags: 0
