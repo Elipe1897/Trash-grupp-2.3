@@ -25,7 +25,8 @@ public class ScoreManagement : MonoBehaviour
         //sets coin and scrap varible to zero - Elias
         Coins = 0;
         Scrap = 0;
-        WaveTimer = 30;
+
+        WaveTimer = 30; //Sets the wavetimer to 30 - Leo N
     }
     public void Start()
     {
@@ -33,7 +34,9 @@ public class ScoreManagement : MonoBehaviour
         CoinsText.text = Coins.ToString();
         ScrapText.text =  Scrap.ToString();
 
+        //sets the MonsterText to the same amount as in the EnemiesAlive variable in the Wavesystem script - Leo N
         MonsterText.text = WaveSystem.instance.EnemiesAlive.ToString();
+        //Sets the wave text so say "Next Wave: " and then print out the Wavetimer variable - Leo N
         WaveText.text = "Next Wave: " + WaveTimer.ToString();
     }
 
@@ -41,12 +44,14 @@ public class ScoreManagement : MonoBehaviour
     void Update()
     {
 
-        WaveTimer -= Time.deltaTime;
+        WaveTimer -= Time.deltaTime; //Makes the WaveTimer Count down from its original number - Leo N
+
         MonsterText.text = WaveSystem.instance.EnemiesAlive.ToString();
+        //Same thing as before but uses "Mathf.Ceil" to round up the number so that it removes the decimales when shown on the screen - Leo N
         WaveText.text = "Next Wave: " + Mathf.Ceil(WaveTimer).ToString();
         
 
-
+        //If the wavetimmer is 0 or less then 0 then the wavetimer is set to 30 - Leo N
         if (WaveTimer == 0 || WaveTimer < 0)
         {
             WaveTimer += 30;

@@ -180,6 +180,7 @@ public class PlayerController_1 : MonoBehaviour
             TouchScrap = true;
         }
 
+        //If the player comes in the specific "Soptunna" then the specific text for that "Soptunna" will be set active - Leo N
         if(collision.gameObject.name == "Soptunna1")
         {
             PopUpText1.SetActive(true);
@@ -224,6 +225,8 @@ public class PlayerController_1 : MonoBehaviour
         {
             TouchScrap = false;
         }
+
+        //If the player exit in the specific "Soptunna" then the specific text for that "Soptunna" will be turned off - Leo N
         if (collision.gameObject.name == "Soptunna1")
         {
             PopUpText1.SetActive(false);
