@@ -70,7 +70,7 @@ public class PlayerController_1 : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>(); // Sets the rigibody component in the rb varible - Elias 
-        health = GetComponent<Health>(); // nån
+        health = GetComponent<Health>(); // lisa
         instance = this;
     }
     private void Update()
@@ -261,7 +261,7 @@ public class PlayerController_1 : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) // nån
+    private void OnTriggerEnter2D(Collider2D collision) // leo s
     {
         if (collision.transform.tag == "Aj")
         { 
@@ -269,7 +269,7 @@ public class PlayerController_1 : MonoBehaviour
          
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision) // nån
+    private void OnCollisionEnter2D(Collision2D collision) // leo s
     {
         if(collision.transform.tag == "Enemy"|| collision.transform.tag =="Aj")
         {
@@ -301,7 +301,7 @@ public class PlayerController_1 : MonoBehaviour
             StartCoroutine(Die());
         }
     }
-    public IEnumerator Die() // nån
+    public IEnumerator Die() // leo s
     {
         
     

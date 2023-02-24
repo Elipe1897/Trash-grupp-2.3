@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
-   public void Restart()
+   public void Restart() // loads the scene where you play when you press the restart button - Elias
     {
-        SceneManager.LoadScene("Movement test");
+        SceneManager.LoadScene("TestScene");
     }
-    public void MainMenu()
+    public void MainMenu() // loadsthe MainMenu scene when the button is pressed - Elias
     {
         SceneManager.LoadScene("MainMenu");
     }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9154901292233313059}
   - component: {fileID: 9154901292233313061}
   - component: {fileID: -4573584630681177154}
-  - component: {fileID: -2033610337092933995}
+  - component: {fileID: -3932210535004935789}
   m_Layer: 0
   m_Name: Papper_trash
   m_TagString: Aj
@@ -147,7 +147,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-2033610337092933995
+--- !u!114 &-3932210535004935789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,6 +156,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 9154901292233313056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c1bdac56d2fbe4ca555b173aa13b6a, type: 3}
+  m_Script: {fileID: 11500000, guid: ecd7da0a9aac01a4c868f8eec5c6f0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

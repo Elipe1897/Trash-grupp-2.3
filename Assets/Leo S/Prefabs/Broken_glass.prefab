@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8103367859805343479}
   - component: {fileID: 8103367859805343477}
   - component: {fileID: -6785549896481363252}
-  - component: {fileID: 135472417128195558}
+  - component: {fileID: 6414808183461469828}
   m_Layer: 0
   m_Name: Broken_glass
   m_TagString: Aj
@@ -145,7 +145,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &135472417128195558
+--- !u!114 &6414808183461469828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,6 +154,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8103367859805343478}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9c1bdac56d2fbe4ca555b173aa13b6a, type: 3}
+  m_Script: {fileID: 11500000, guid: ecd7da0a9aac01a4c868f8eec5c6f0d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

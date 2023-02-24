@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// PlayerController_1.cs Är det script som används till movement nu - Elias
 public class Movement : MonoBehaviour
 {
     private enum State { idle, run, jump, hurt, death };
