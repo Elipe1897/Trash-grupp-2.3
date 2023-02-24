@@ -24,8 +24,8 @@ public class EnemyAI : MonoBehaviour
 
     private bool isAttacking;
 
-    private enum State { idle, hurt, death };
-    private State state = State.idle;
+   // private enum State { idle, hurt, death };
+   // private State state = State.idle;
 
     public virtual void Start()
     {
@@ -33,7 +33,7 @@ public class EnemyAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("Player").transform;
         InvokeRepeating("UpdatePath", 0f, .5f);
-        
+        speed = 5;
     }
 
     void UpdatePath()
@@ -99,19 +99,19 @@ public class EnemyAI : MonoBehaviour
         }
 
 
-        anim.SetInteger("state", (int)state);
+       // anim.SetInteger("state", (int)state);
         StateSwitch();
-        if (health <= 0)
+      //  if (health <= 0)
         {
-            state = State.death;
-            StartCoroutine(Die());
+      //      state = State.death;
+     //       StartCoroutine(Die());
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.tag == "Bullet")
         {
-            state = State.hurt;
+       //     state = State.hurt;
             TakeDamage();
         }
     }
@@ -119,12 +119,11 @@ public class EnemyAI : MonoBehaviour
 
     void TakeDamage()
     {
-        health -= 1;
+    //    health -= 1;
     }
     public IEnumerator Die()
     {
         yield return new WaitForSeconds(.4f);
-        EnemySpawn.instance.killCount++;
         WaveSystem.instance.EnemyKilled();
         Destroy(gameObject);
     }
@@ -143,7 +142,7 @@ public class EnemyAI : MonoBehaviour
     }
     private void StateSwitch()
     {
-        state = State.idle;
+        //state = State.idle;
     }
 
 }

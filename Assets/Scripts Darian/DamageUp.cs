@@ -23,7 +23,7 @@ public class DamageUp : MonoBehaviour
             Shooting.instance.DMG += 1;
             ScoreManagement.instance.Coins -= 10;
             print("Upgrade!");
-            ScoreManagement.instance.CoinsText.text = ScoreManagement.instance.Coins.ToString(); //ändrar texten/numren
+            ScoreManagement.instance.CoinsText.text = ScoreManagement.instance.Coins.ToString(); //Sets the varible Coins and scrap to text form, so the player can see how many coins and scrap they have - Leo N
             ScoreManagement.instance.ScrapText.text = ScoreManagement.instance.Scrap.ToString();
         }
     }

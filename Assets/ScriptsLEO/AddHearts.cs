@@ -5,19 +5,8 @@ using UnityEngine;
 public class AddHearts : MonoBehaviour
 {
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void OnTriggerStay2D(Collider2D collision)
+    //If the heart object would collide with the player then The instanse AddHealth in the Health script would be used and it would destroy the heart object - Leo N
+    public void OnTriggerStay2D(Collider2D collision) 
     {
         if (collision.transform.tag == "Player")
         {
