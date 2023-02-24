@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public static Bullet instance;
     public ParticleSystem ps;
     public float aliveTime;
-    private void Update()
+    public void Update()
     {
+        instance = this;
         aliveTime += Time.deltaTime;
         if(aliveTime > 2.5f)
         {
